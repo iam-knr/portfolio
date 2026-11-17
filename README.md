@@ -1,4 +1,4 @@
-# Kailas Nath R (KNR)
+# Kailas (KNR) Nath R
 
 Personal site of Kailas (KNR) Nath R: Agentic AI Consultant, Digital Marketing Consultant and Advertising Trainer, based in India.
 
