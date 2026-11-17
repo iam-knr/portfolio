@@ -1,0 +1,102 @@
+slug: what-is-mcp-model-context-protocol
+order: 3
+type: Definition
+crumb: What is MCP
+title: What Is MCP (Model Context Protocol)? Explained for Marketers and Builders
+h1: What Is MCP? Model Context Protocol Explained Without Jargon
+desc: MCP, the Model Context Protocol, is an open standard that lets AI apps connect to tools and data in one common way. Definition, how it works, examples, security and marketing uses.
+kw: what is MCP, Model Context Protocol, MCP server, MCP for marketers, MCP AI agents, MCP vs API, MCP n8n
+dek: MCP gets called the USB port for AI. That line is catchy but it hides the useful parts. Here is what it really is and what you can do with it today.
+answer: MCP, short for Model Context Protocol, is an open standard that lets an AI app connect to outside tools and data through one common interface. A tool exposes an MCP server. An AI app, called the client, finds what the server offers and calls it. This replaces custom integrations for every tool and model pair.
+---
+<h2>MCP definition</h2>
+<p>Model Context Protocol (MCP) is an open protocol, introduced by Anthropic in late 2024, that defines how AI applications talk to external systems. Those systems can be databases, file stores, ad platforms, CRMs, calendars or any service with an interface.</p>
+<p>Before MCP, if you wanted an AI app to read your Google Sheet, someone had to write a custom connector for that app and that sheet. Ten tools and five AI apps meant fifty connectors. With MCP, each tool builds one server and each AI app builds one client. They all fit together.</p>
+
+<h2>The three parts of MCP</h2>
+<ul>
+<li><strong>Host.</strong> The AI app the user works in, such as a chat app, a code editor or an agent builder.</li>
+<li><strong>Client.</strong> The part inside the host that holds the connection to a server.</li>
+<li><strong>Server.</strong> A small program that exposes a tool or data source in the MCP format.</li>
+</ul>
+<h3>What a server can offer</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Type</th><th>Meaning</th><th>Marketing example</th></tr></thead>
+<tbody>
+<tr><td>Tools</td><td>Actions the model can call</td><td>"Pause campaign", "create lead", "send template message"</td></tr>
+<tr><td>Resources</td><td>Data the model can read</td><td>A report file, a customer record, a keyword list</td></tr>
+<tr><td>Prompts</td><td>Saved instruction templates</td><td>"Weekly ad review" template with the right questions</td></tr>
+</tbody></table></div>
+
+<h2>How MCP works, step by step</h2>
+<ol>
+<li>You connect an MCP server to your AI app. You give it the access it needs.</li>
+<li>The client asks the server, "What can you do?" The server replies with a list of tools and what inputs each needs.</li>
+<li>You ask a question, such as "Which campaigns spent more than their budget yesterday?"</li>
+<li>The model decides a tool call is needed and sends a structured request through the client.</li>
+<li>The server runs it against the real system and returns the result.</li>
+<li>The model reads the result and writes the answer, or calls another tool.</li>
+</ol>
+<p>The model never sees your password. The server holds the access. The model only sees the tool list and the results.</p>
+
+<h2>MCP vs API</h2>
+<p>This is the question I get most. An API is how a program talks to a service. MCP is a layer on top, made for AI models.</p>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>Regular API</th><th>MCP</th></tr></thead>
+<tbody>
+<tr><td>Made for</td><td>Developers writing code</td><td>AI models choosing actions</td></tr>
+<tr><td>Discovery</td><td>Read the docs, write code</td><td>The server describes itself to the model</td></tr>
+<tr><td>Format</td><td>Different for each service</td><td>One common format</td></tr>
+<tr><td>Typical use</td><td>An app calls a service on a fixed path</td><td>An agent picks from many tools at run time</td></tr>
+</tbody></table></div>
+<p>MCP does not replace APIs. Most MCP servers call APIs underneath. It just makes them easy for an agent to find and use.</p>
+
+<h2>Why MCP matters for agentic AI</h2>
+<p>An agent is only as useful as the tools it can reach. MCP makes it cheap to add a new tool. Connect a server and the agent can use it the same day. That is why it spread fast through the <a href="/blog/what-is-agentic-ai/">agentic AI</a> world. Many chat apps, code editors and workflow tools now support it.</p>
+
+<h2>MCP examples for marketing teams</h2>
+<ul>
+<li><strong>Analytics.</strong> Ask "Why did organic traffic drop last Thursday?" and the agent queries your analytics through a server and answers with real numbers.</li>
+<li><strong>Ads.</strong> A server for your ad platform lets an agent list campaigns, read costs and draft changes.</li>
+<li><strong>CRM.</strong> Look up a lead, update a stage, log a call note.</li>
+<li><strong>Files and docs.</strong> Read your brand guide and past reports so answers match your style.</li>
+<li><strong>Your own tools.</strong> I build small servers that wrap my own scripts, so an agent can call them.</li>
+</ul>
+<p>See the full picture in <a href="/blog/agentic-ai-in-marketing/">agentic AI in marketing</a>.</p>
+
+<h2>MCP and n8n</h2>
+<p>n8n can work on both sides. It has a node that lets an agent in a workflow call tools from an outside MCP server. It also has a trigger that turns your own workflow into an MCP server, so a chat app or another agent can call it. That means any workflow you build, say "create a lead and send a welcome message", becomes a tool that other agents can use. I explain this in <a href="/blog/n8n-ai-agents-marketing-automation/">the n8n guide</a>.</p>
+
+<h2>Security: what to watch</h2>
+<p>MCP gives models real power, so treat it like giving access to an employee.</p>
+<ul>
+<li><strong>Least access.</strong> Give each server only the permissions the task needs. Read-only where possible.</li>
+<li><strong>Trust the source.</strong> Only install servers from makers you trust. A bad server can send harmful instructions to your model.</li>
+<li><strong>Prompt injection.</strong> Text returned by a tool, such as an email or web page, may contain instructions meant to hijack the agent. Do not let such text trigger spending, deletion or data export without a human check.</li>
+<li><strong>Approvals.</strong> Many hosts ask you to approve each tool call. Keep that on for anything that writes data.</li>
+<li><strong>Logs.</strong> Keep a record of what was called and with what input.</li>
+</ul>
+
+<h2>How to try MCP this week</h2>
+<ol>
+<li>Pick an AI app that supports MCP.</li>
+<li>Connect one read-only server, such as a file or analytics source.</li>
+<li>Ask five real questions you normally answer by hand.</li>
+<li>Check each answer against the source.</li>
+<li>Only then add a server that can write.</li>
+</ol>
+
+<h2>Limits of MCP</h2>
+<ul>
+<li>It is young. Details change and some servers are poorly built.</li>
+<li>Too many tools confuse the model. Offer a small, clear set.</li>
+<li>It standardizes the connection, not the quality of what is behind it. Bad data in, bad answer out.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<details><summary>What does MCP stand for?</summary><p>MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to tools and data.</p></details>
+<details><summary>Who created MCP?</summary><p>Anthropic introduced MCP in November 2024 as an open standard. Many other companies and tool makers have since added support.</p></details>
+<details><summary>What is an MCP server?</summary><p>An MCP server is a small program that exposes a tool or data source in the MCP format, so any compatible AI app can discover it and use it.</p></details>
+<details><summary>Is MCP the same as an API?</summary><p>No. An API is how code talks to a service. MCP sits on top and gives AI models a common way to find and call tools. Most MCP servers use APIs underneath.</p></details>
+<details><summary>Is MCP safe?</summary><p>It can be if you use least access, trusted servers, approvals for write actions and logs. The main risks are over-broad permissions and prompt injection through tool results.</p></details>
+<details><summary>Do marketers need to learn MCP?</summary><p>You do not need to build servers. You should understand what it is, because it decides which tools your AI assistant can reach and how safely.</p></details>

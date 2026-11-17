@@ -1,0 +1,112 @@
+slug: what-is-agentic-ai
+order: 1
+type: Definition
+crumb: What is agentic AI
+title: What Is Agentic AI? Definition, Examples and How It Works (2026)
+h1: What Is Agentic AI? A Plain Definition With Real Examples
+desc: Agentic AI is software that takes a goal, plans the steps, uses tools and acts with little supervision. Definition, how it works, examples, limits and risks.
+kw: what is agentic AI, agentic AI definition, agentic AI meaning, AI agents vs agentic AI, agentic AI examples, agentic AI consultant India
+dek: Most pages about this topic are written by vendors. This one is written by someone who builds these systems and also runs ad accounts with them.
+answer: Agentic AI is an AI system that works toward a goal on its own. You give it an outcome, not a step by step prompt. It plans the steps, uses tools such as search, spreadsheets, ad platforms or email, checks its own results and keeps going until the goal is met or it needs a human.
+---
+<h2>Agentic AI definition</h2>
+<p>Agentic AI means software that can pursue a goal with some independence. It does not wait for you to tell it every step. It decides what to do next, does it through connected tools, looks at what happened, and adjusts.</p>
+<p>The word comes from "agency", which means the ability to act. A normal chatbot answers. An agentic system acts.</p>
+<p>A simple test helps. Ask yourself: after I give the instruction, who decides the next step? If you do, it is a chatbot or an assistant. If the software does, it is agentic.</p>
+<h3>The four parts every agentic system has</h3>
+<ul>
+<li><strong>A goal.</strong> For example, "bring cost per lead under 600 rupees this week."</li>
+<li><strong>A planner.</strong> A language model that breaks the goal into steps and picks the next one.</li>
+<li><strong>Tools.</strong> Things the model can call: a web search, a database, the Google Ads API, a CRM, a WhatsApp sender.</li>
+<li><strong>A loop with memory.</strong> The system reads the result of each action, stores what matters, and decides again.</li>
+</ul>
+<p>Remove any one of these and you get something weaker. No tools means it can only talk. No loop means it runs once and stops. No goal means it just follows the last prompt.</p>
+
+<h2>Agentic AI vs generative AI vs AI agents</h2>
+<p>People mix these terms. Here is how I separate them when I explain them in classes.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Term</th><th>What it does</th><th>Who decides the next step</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Generative AI</td><td>Creates text, images, code or audio from a prompt</td><td>You</td><td>Writing 10 ad headlines</td></tr>
+<tr><td>AI assistant</td><td>Answers questions and does single tasks in a chat</td><td>You</td><td>A chat window that summarizes a report</td></tr>
+<tr><td>AI agent</td><td>One model with tools that completes a task</td><td>The model, inside one task</td><td>An agent that pulls last week's ad data and writes a summary</td></tr>
+<tr><td>Agentic AI</td><td>One or many agents working toward a larger goal with planning, memory and checks</td><td>The system</td><td>A set of agents that audit an account, propose changes, get approval and apply them</td></tr>
+</tbody></table></div>
+<p>The line between "AI agent" and "agentic AI" is blurry. Many people use them as the same thing. I use "AI agent" for the single worker and "agentic AI" for the style of system, where the software owns the plan.</p>
+
+<h2>How agentic AI works, step by step</h2>
+<p>Here is a real loop, in the order it runs.</p>
+<ol>
+<li><strong>Receive the goal.</strong> "Find out why leads dropped on Tuesday and tell me what to fix."</li>
+<li><strong>Plan.</strong> The model lists what it needs: ad spend by campaign, landing page uptime, form errors, CRM lead counts.</li>
+<li><strong>Act with tools.</strong> It calls the ad platform, the analytics tool and the CRM. Each call returns data.</li>
+<li><strong>Observe.</strong> It reads the data. It sees that one campaign's spend stayed flat but form submissions fell to zero.</li>
+<li><strong>Re-plan.</strong> It now checks the landing page for that campaign and finds a broken form script.</li>
+<li><strong>Report or act.</strong> It posts a message with the cause and the fix. If you allowed it, it opens a ticket or pauses the campaign.</li>
+</ol>
+<p>This loop is sometimes called "reason and act". The model thinks, acts, looks, and thinks again. The quality of the system depends mostly on the tools and the checks around the model, not on the model alone.</p>
+
+<h2>Examples of agentic AI</h2>
+<h3>In marketing and ads</h3>
+<ul>
+<li>An agent that reads search term reports every morning, flags wasted spend and drafts negative keywords for you to approve.</li>
+<li>A lead agent that reads a new enquiry, checks the CRM, scores it, and sends a first WhatsApp reply within a minute.</li>
+<li>A reporting agent that pulls data from several platforms and writes the weekly note in plain language.</li>
+</ul>
+<p>I go deeper on this in <a href="/blog/agentic-ai-in-marketing/">agentic AI in marketing</a> and <a href="/blog/ai-in-advertising-meta-google-ads/">AI in advertising</a>.</p>
+<h3>In software and operations</h3>
+<ul>
+<li>A coding agent that reads a bug report, edits the files, runs the tests and opens a pull request.</li>
+<li>A support agent that looks up an order, checks the policy and issues a refund inside a set limit.</li>
+<li>A research agent that reads 40 pages and returns a sourced summary.</li>
+</ul>
+<h3>On a personal desktop</h3>
+<p>I built Shika, a small pet that lives on my screen, listens, types what I say into any app and keeps my reminders. It is a tiny example of an agent with a few tools. You can see it at <a href="https://shika.iamknr.in/">shika.iamknr.in</a>.</p>
+
+<h2>What agentic AI is good at</h2>
+<ul>
+<li><strong>Work that has many small steps.</strong> Collect, compare, decide, update. People get bored by this. Software does not.</li>
+<li><strong>Work that needs data from several places.</strong> Ads, analytics, CRM and email rarely sit in one tool.</li>
+<li><strong>Work that repeats.</strong> Daily checks, weekly reports, lead follow ups.</li>
+<li><strong>First drafts of decisions.</strong> The agent proposes. A human approves.</li>
+</ul>
+
+<h2>Where it fails</h2>
+<p>I want to be direct here, because most articles skip this part.</p>
+<ul>
+<li><strong>Errors compound.</strong> If step two is wrong, steps three to ten are built on it. A small mistake early becomes a large one late.</li>
+<li><strong>Models still make things up.</strong> An agent can confidently report a number that it never pulled. Good systems force it to show the source for every figure.</li>
+<li><strong>Tools break.</strong> APIs change, tokens expire, a field is renamed. The agent then guesses, and guessing is where damage happens.</li>
+<li><strong>Cost can run away.</strong> A loop that never ends can burn through model credits. Always set a step limit and a spend limit.</li>
+<li><strong>It has no business sense by default.</strong> It will cut a campaign that looks bad on cost per click but brings your best customers, unless you tell it how you judge success.</li>
+</ul>
+<div class="note"><b>My rule:</b> let the agent read freely, but make it ask before it spends money, sends a message to a customer, or deletes anything. Loosen that only after weeks of watching it.</div>
+
+<h2>The risks you should plan for</h2>
+<h3>Wrong actions</h3>
+<p>Give each agent the smallest set of permissions it needs. A reporting agent should have read access only.</p>
+<h3>Prompt injection</h3>
+<p>If an agent reads a web page or an email, the text in it can try to give the agent new orders. Treat everything an agent reads from outside as untrusted. Never let outside text trigger payments, deletions or data sharing.</p>
+<h3>Data privacy</h3>
+<p>Customer data sent to a model leaves your system. In India, check the Digital Personal Data Protection Act, 2023 and what your contracts say. Mask names and phone numbers where you can.</p>
+<h3>No audit trail</h3>
+<p>Log every action: what it did, why, with which data. If you cannot replay it, you cannot trust it.</p>
+
+<h2>How to start with agentic AI</h2>
+<ol>
+<li><strong>Pick one boring, repeated task.</strong> Weekly report, lead follow up, or search term review.</li>
+<li><strong>Write down the steps a person follows today.</strong> If you cannot write them, an agent cannot follow them.</li>
+<li><strong>Build the read-only version first.</strong> Let it gather and summarize. Compare to your own work for two weeks.</li>
+<li><strong>Add one action with approval.</strong> A button that says "apply this change".</li>
+<li><strong>Measure.</strong> Hours saved, errors caught, and money moved. If you cannot measure it, drop it.</li>
+</ol>
+<p>Tools worth knowing: <a href="/blog/n8n-ai-agents-marketing-automation/">n8n</a> for building workflows with agents inside them, and <a href="/blog/what-is-mcp-model-context-protocol/">Model Context Protocol (MCP)</a> for connecting agents to your tools in a standard way.</p>
+<p>If you want someone to set this up for you, read <a href="/blog/best-agentic-ai-consultant-in-india/">how to choose an agentic AI consultant in India</a> first. It will save you from hiring the wrong person, including me, if I am the wrong fit.</p>
+
+<h2>Frequently asked questions</h2>
+<details><summary>What is agentic AI in simple words?</summary><p>It is AI that does the work, not only the talking. You give it a goal. It plans the steps, uses tools, checks the result and keeps going until the job is done or it needs your approval.</p></details>
+<details><summary>What is the difference between agentic AI and generative AI?</summary><p>Generative AI creates content when you ask. Agentic AI uses generative models as its brain, then adds tools, memory and a loop so it can act toward a goal on its own.</p></details>
+<details><summary>Is ChatGPT agentic AI?</summary><p>A plain chat with a model is not agentic. It becomes agentic when it is given tools and allowed to plan and act across several steps, such as browsing, running code or calling other apps to finish a task.</p></details>
+<details><summary>Is agentic AI safe for business use?</summary><p>It can be, with limits. Use read-only access first, require approval for spending and customer messages, log every action and set step and cost limits. Without these, errors can spread quickly.</p></details>
+<details><summary>Do I need to code to use agentic AI?</summary><p>Not always. Visual tools like n8n let you build agent workflows without much code. Complex or sensitive systems still benefit from a developer who can test and secure them.</p></details>
+<details><summary>Will agentic AI replace marketers?</summary><p>It will replace parts of the job, mainly the repeated data work. Judgement, taste, client trust and knowing what to ask for still need people. Marketers who learn to direct agents will do more than those who do not.</p></details>

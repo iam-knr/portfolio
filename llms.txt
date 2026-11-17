@@ -1,0 +1,24 @@
+# Kailas (KNR) Nath R
+
+> Kailas (KNR) Nath R is an agentic AI consultant and digital marketing consultant based in India. He runs paid ads, builds AI agents and writes code. Co-founder of Ads Mentor, founder of Dealfox AI CRM, author of a book on social media ads, and has trained more than 4,000 marketers.
+
+Home page: https://iamknr.in/
+Contact: https://linkedin.com/in/iamknr/
+
+## Articles
+- [What Is Agentic AI? A Plain Definition With Real Examples](https://iamknr.in/blog/what-is-agentic-ai/): Agentic AI is software that takes a goal, plans the steps, uses tools and acts with little supervision. Definition, how it works, examples, limits and risks.
+- [Agentic AI in Marketing: What It Is and How to Use It](https://iamknr.in/blog/agentic-ai-in-marketing/): Agentic AI in marketing means AI agents that plan and run marketing tasks toward a goal. Definition, 10 use cases, tools, costs, a rollout plan and the failures to expect.
+- [What Is MCP? Model Context Protocol Explained Without Jargon](https://iamknr.in/blog/what-is-mcp-model-context-protocol/): MCP, the Model Context Protocol, is an open standard that lets AI apps connect to tools and data in one common way. Definition, how it works, examples, security and marketing uses.
+- [n8n for AI Agents: Build Marketing Workflows That Think](https://iamknr.in/blog/n8n-ai-agents-marketing-automation/): n8n is a workflow automation tool you can self-host. Learn what n8n is, how its AI Agent node and MCP nodes work, 6 marketing workflows to build, and where it falls short.
+- [AI in Marketing: What It Means and Where It Actually Helps](https://iamknr.in/blog/ai-in-marketing/): AI in marketing is the use of machine learning and language models to plan, create, target and measure marketing. Definition, 12 examples, tools, a tool stack and the mistakes to avoid.
+- [AI in Advertising: A Working Guide for Meta and Google Ads](https://iamknr.in/blog/ai-in-advertising-meta-google-ads/): AI in advertising is the use of machine learning and AI agents to plan, run and improve paid ads. Learn what Meta and Google automate, where to add your own agents and what to never hand over.
+- [AI Landing Page Development: Build, Test and Improve Pages With AI](https://iamknr.in/blog/ai-landing-page-development/): AI landing page development uses language models and coding agents to write, build and test landing pages faster. A 7 step process, a page checklist, testing ideas and the mistakes that hurt conversions.
+- [Best Agentic AI Consultant in India: How to Choose the Right One](https://iamknr.in/blog/best-agentic-ai-consultant-in-india/): How to pick an agentic AI consultant in India. What they do, 9 questions to ask, red flags, cost drivers, a comparison of consultant types and where Kailas (KNR) Nath R fits.
+- [Best Digital Marketing Consultant in India: A Buyer's Guide](https://iamknr.in/blog/best-digital-marketing-consultant-in-india/): How to choose a digital marketing consultant in India. What they do, how they differ from agencies, 10 questions to ask, red flags, pricing models, and where Kailas (KNR) Nath R fits.
+
+## Profiles
+- [LinkedIn](https://linkedin.com/in/iamknr/)
+- [GitHub](https://github.com/iam-knr/)
+- [Ads Mentor](https://adsmentor.in)
+- [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
+- [Shika AI desktop pet](https://shika.iamknr.in/)
