@@ -51,6 +51,7 @@ def aim(idx):
     pick=[AIMALL[(idx+k)%8] for k in (0,1,2,3)]
     li=''.join(f'<li><a href="https://aiinmarketing.in/blogs/{u}" rel="noopener">{html.escape(t)}<span>{k} &rarr;</span></a></li>' for t,u,k in pick)
     return f'<section class="aim" aria-label="Articles on AI in Marketing"><h2>More on AI in Marketing</h2><p class="sub">Articles from AIM, the live AI marketing program I teach.</p><ul>{li}</ul><a class="all" href="https://aiinmarketing.in/blogs" rel="noopener">View all articles on aiinmarketing.in &rarr;</a></section>'
+AIMCARD='<section class="aimcard" aria-label="AI in Marketing"><div class="lab">AI in Marketing by Ads Mentor</div><h2>Want more? Read the AIM articles</h2><p>Case studies, course guides and ad account lessons from the live AI marketing program I teach, all on aiinmarketing.in.</p><a class="btn" href="https://aiinmarketing.in/blogs" rel="noopener">Go to aiinmarketing.in &rarr;</a></section>'
 def faqs(body):
     out=[]
     for m in re.finditer(r'<details><summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>',body,re.S):
@@ -97,7 +98,7 @@ cards=''.join(f'<div class="card"><div class="k">{a["type"]}</div><h2><a href="/
 idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Articles</div><h1>Agentic AI, MCP and AI marketing, explained plainly</h1><p class="dek">Long guides from a working practitioner in India. Each one starts with a definition, shows how the thing works in real campaigns, and lists where it fails.</p>
 <div class="cards">{cards}</div>
 {BOOK}
-{aim(0)}
+{AIMCARD}
 {AUTHOR}</div></main>'''
 g=[{"@type":"CollectionPage","name":"Articles on agentic AI, MCP and AI in marketing","url":BASE+"/blog/","author":{"@id":BASE+"/#kailas"},"hasPart":[{"@type":"Article","headline":a['h1'],"url":BASE+f"/blog/{a['slug']}/"} for a in arts]},PERSON]
 open('blog/index.html','w',encoding='utf8').write(page("Articles on Agentic AI, MCP and AI in Marketing | Kailas (KNR) Nath R","Definition-led guides on agentic AI, Model Context Protocol, AI in marketing, AI in advertising and AI landing pages, by Kailas (KNR) Nath R, an agentic AI consultant in India.","/blog/",idx,{"@context":"https://schema.org","@graph":g},ptype="website"))
