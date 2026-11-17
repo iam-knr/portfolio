@@ -43,7 +43,7 @@ def page(title,desc,path,body,schema,kw="",ptype="article",img=None):
 <meta name="twitter:image" content="{img}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script>
 {FONTS}
-<link rel="stylesheet" href="/blog/blog.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
 </head><body>
 {HEADER}
 {body}
@@ -83,7 +83,7 @@ for a in arts:
     main=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / {html.escape(a['crumb'])}</div>
 <article><h1>{a['h1']}</h1><p class="dek">{a['dek']}</p>
 <div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="{DATE}">17 Nov 2026</time></span><span>{mins} min read</span></div>
-<figure class="hero"><img src="/blog/{a['slug']}/banner.svg" width="1200" height="630" alt="{html.escape(hero.CFG[a['slug']][5])}"></figure>
+<figure class="hero"><img src="/blog/{a['slug']}/banner.svg" width="1200" height="630" style="display:block;width:100%;max-width:100%;height:auto" alt="{html.escape(hero.CFG[a['slug']][5])}"></figure>
 <div class="answer"><b>Short answer</b><p>{a['answer']}</p></div>
 {toc}
 {body}
