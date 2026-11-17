@@ -113,3 +113,71 @@ IGS['ai-landing-page-development']=("Infographic: seven steps to build and test 
 IGS['best-agentic-ai-consultant-in-india']=("Infographic: six checks before hiring an agentic AI consultant.",steps("Six checks before you hire","Any miss means keep looking",[("Live agent shown","A running system, not slides"),("A failure story","What broke and how it was fixed"),("Limits and approvals","Step caps, spend caps, human sign off"),("Data handling written","Where data goes, DPDP Act aware"),("Paid pilot, 2 to 4 weeks","One task, one success number"),("You own the build","Workflows, prompts, documents")],hl_last=False,rowh=58,gap=10))
 # 9 timeline
 IGS['best-digital-marketing-consultant-in-india']=("Infographic: what a good first 90 days with a consultant looks like.",steps("A good first 90 days","What you should see and when",[("Days 1 to 14","Audit, tracking fixed, goal and budget agreed"),("Days 15 to 45","Campaigns and pages live, first learning report"),("Days 46 to 90","Cost per qualified lead falling, reasons written")],hl_last=True,numbered=False,rowh=70,gap=16))
+
+# ---- extra diagram helpers (v2) ----
+FIGS={}
+def compare(title,sub,lt,rt,rows,rowh=58):
+    h0=104;out=head(title,sub)
+    cw=(W-56-12)/2
+    out+=f'<rect x="28" y="{h0}" width="{cw}" height="40" fill="{INK}"/>'+tx(28+cw/2,h0+27,lt,17,800,"#fff","middle")
+    out+=f'<rect x="{28+cw+12}" y="{h0}" width="{cw}" height="40" fill="{RED}"/>'+tx(28+cw+12+cw/2,h0+27,rt,17,800,"#fff","middle")
+    y=h0+40
+    for a,b in rows:
+        out+=f'<rect x="28" y="{y}" width="{cw}" height="{rowh}" fill="#fff" stroke="{INK}" stroke-width="2"/><rect x="{28+cw+12}" y="{y}" width="{cw}" height="{rowh}" fill="#fff" stroke="{INK}" stroke-width="2"/>'
+        out+=wraptext(28+12,y+24,a,cw-24,15)+wraptext(28+cw+12+12,y+24,b,cw-24,15)
+        y+=rowh
+    h=y+44
+    return wrap(h,title,sub+". "+lt+" versus "+rt+".",out+foot(h))
+def wraptext(x,y,s,width,size=15,lh=20):
+    words=s.split();lines=[];cur=""
+    mx=int(width/(size*0.52))
+    for w in words:
+        if len(cur)+len(w)+1<=mx:cur=(cur+" "+w).strip()
+        else:lines.append(cur);cur=w
+    lines.append(cur)
+    return ''.join(tx(x,y+i*lh,l,size,400,INK) for i,l in enumerate(lines))
+def checklist(title,sub,items,rowh=44):
+    y=104;out=head(title,sub)
+    for it in items:
+        out+=f'<rect x="28" y="{y}" width="{W-56}" height="{rowh}" fill="#fff" stroke="{INK}" stroke-width="2"/><rect x="42" y="{y+rowh/2-11}" width="22" height="22" fill="none" stroke="{RED}" stroke-width="3"/><path d="M47 {y+rowh/2} l5 6 l9 -12" stroke="{RED}" stroke-width="3" fill="none"/>'
+        out+=wraptext(78,y+rowh/2+5,it,W-56-64,15) if len(it)<=52 else wraptext(78,y+17,it,W-56-64,15,18)
+        y+=rowh
+    h=y+44
+    return wrap(h,title,sub+". "+"; ".join(items)+".",out+foot(h))
+def stages(title,sub,cols,rows,rowh=50):
+    # header columns with rows of label/value: a simple timeline table
+    y=104;out=head(title,sub);n=len(cols);cw=(W-56)/n
+    for i,c in enumerate(cols):
+        out+=f'<rect x="{28+i*cw}" y="{y}" width="{cw}" height="40" fill="{INK if i%2==0 else RED}"/>'+tx(28+i*cw+cw/2,y+26,c,16,800,"#fff","middle")
+    y+=40
+    for r in rows:
+        for i,c in enumerate(r):
+            out+=f'<rect x="{28+i*cw}" y="{y}" width="{cw}" height="{rowh}" fill="#fff" stroke="{INK}" stroke-width="2"/>'+wraptext(28+i*cw+10,y+22,c,cw-20,14,18)
+        y+=rowh
+    h=y+44
+    return wrap(h,title,sub+". "+", ".join(cols)+".",out+foot(h))
+
+FIGS['agentic-run']=("Diagram: one agent run, from goal to report, with every tool call logged.",steps("One agent run","Goal in, report out, nothing changed",[("Goal","Which campaigns overspent yesterday, and why?"),("Plan","Need costs and budgets, then a reason"),("Tool call 1","get_campaign_costs: C is at 142 percent"),("Tool calls 2 and 3","Budget unchanged; one broad keyword found"),("Report","Cause named with evidence; no changes made")],hl_last=True,numbered=False,rowh=60,gap=12))
+FIGS['agentic-checklist']=("Checklist: eight questions to answer before an agent runs on real work.",checklist("Before you trust an agent","Answer yes to all eight",["The goal has a number and a time","Every tool is read-only unless writing is the point","There is a maximum step count","Spending and customer messages need approval","Every run writes to a log you can read","I checked 10 outputs against the source","An alert fires when a run fails","One person owns it and knows how to switch it off"]))
+
+FIGS['agentic-mkt-score']=("Diagram: score each use case on four questions, then start with the highest total.",stages("Pick the first use case","Score 1 to 5 on each question",["Use case","Repeat","Clear","Safe","Data"],[["Reporting","5","5","5","4"],["Search terms","4","4","5","4"],["Lead follow up","5","3","2","4"],["Budget changes","3","3","1","3"]],rowh=46))
+FIGS['agentic-lead-sop']=("Diagram: the lead response agent, from form submit to approved first reply.",steps("Lead response agent","Draft first, auto-send later",[("Lead arrives","Form or Meta lead form"),("Duplicate check","Match by phone and email"),("Classify intent","Label plus the supporting quote"),("Draft from template","Name and product filled in"),("Human approves","Auto-send only after 2 clean weeks")],hl_last=True,numbered=False,rowh=60,gap=12))
+FIGS['mcp-sequence']=("Diagram: the order of messages when an assistant uses an MCP server.",steps("One MCP request","Who talks to whom, in order",[("1. Client asks the server","tools/list: what can you do?"),("2. Server replies","Tool names, descriptions, inputs"),("3. Model picks a tool","Writes arguments such as date = yesterday"),("4. Server runs it","Calls the real system with its own key"),("5. Model answers","Reads the result and replies in plain words")],numbered=False,rowh=60,gap=12))
+FIGS['mcp-sop']=("Diagram: connect a first MCP server safely, from choosing the data to the 30 day review.",steps("First MCP connection","Read-only, limited, logged",[("Choose one read-only source","Reports folder or analytics"),("Check the server","Maker, code, last update, access asked"),("Limited key","Never an admin key"),("Test five real questions","Check each against the source"),("Approvals on, log it","Review in 30 days")],rowh=60,gap=12))
+FIGS['mcp-checklist']=("Checklist: eight checks before you connect an MCP server to real data.",checklist("Server review","Eight checks before connecting",["I know who made it and can read the code","It asks only for the access the job needs","I made a limited, read-only key for it","Its tool list matches its documentation","Tool approvals are switched on","Results cannot trigger spending or deletion alone","I tested five questions I already know the answer to","It is written in my access log with a review date"]))
+FIGS['n8n-lead-flow']=("Diagram: the lead response flow in n8n with an approval step and an error flow.",steps("Lead response in n8n","Eleven steps, one human click",[("Trigger and clean","Webhook; fix phone, email, case"),("Duplicate check","Search CRM; stop if found"),("AI Agent labels intent","Ready, researching or not a fit"),("CRM record and draft","Template, no invented offers"),("Approval in team chat","Approve or edit; then send")],hl_last=True,rowh=60,gap=12))
+FIGS['n8n-selfhost']=("Checklist: eight tasks that keep a self-hosted n8n safe and running.",checklist("Self-hosting n8n","Eight jobs, done once, reviewed monthly",["Small server set up from the official docs","Domain with HTTPS for webhooks","Owner login locked down, no public sign up","Daily database and key backup","One restore test completed","Monthly update after reading release notes","Uptime alert to my phone","One page runbook written"]))
+
+FIGS['aim-funnel']=("Diagram: where AI helps at each funnel stage, and what stays human.",stages("AI across the funnel","Help at each stage, judgment stays human",["Stage","AI helps with","You decide"],[["Awareness","Creative variants, briefs","Message, channel"],["Interest","Page checks, headline tests","Offer, proof"],["Decision","Lead scoring, reply drafts","Price, objections"],["Purchase","Reminders, call notes","Closing"],["Retention","Churn flags, review watch","Root cause"]],rowh=52))
+FIGS['aim-pilot']=("Diagram: a 30 day AI pilot for a marketing team in four weekly steps.",steps("30 day AI pilot","Two tasks, measured, then a decision",[("Week 1: Audit and baseline","Time two tasks for two weeks; pick the two"),("Week 2: Rules and prompts","Data rules, saved prompts, approvals"),("Week 3: Run in parallel","Old way and new way side by side"),("Week 4: Decide","Adopt if a third faster with no quality drop")],hl_last=True,rowh=62,gap=12))
+FIGS['ads-search-terms']=("Diagram: weekly search term review, where the agent proposes and a person applies.",steps("Search term review","20 minutes a week with an agent",[("Pull 7 days of terms","Cost, clicks, conversions, keyword"),("Filter waste","Spend over a limit, zero conversions"),("Agent groups by reason","Jobs, free, wrong product, competitor"),("Person removes real buyers","Check brand and long phrases"),("Apply and record","Log the waste found")],rowh=60,gap=12))
+FIGS['ads-angle-test']=("Comparison: testing random wording versus testing angles.",compare("Test angles, not words","What you learn is reusable","Random wording","Angle testing",[("Change a few words, see a click rate","Test price, speed, trust, proof, urgency"),("Lesson: variant B won","Lesson: speed beat price for this audience"),("Judged by clicks","Judged by cost per qualified lead"),("Starts over next time","Next cycle begins from the best angle")],rowh=76))
+FIGS['ads-health']=("Checklist: eight checks in a monthly ad account health review.",checklist("Monthly account check","Tracking first, everything else after",["Test conversion recorded once per platform","Platform numbers compared with the CRM","Campaigns merged where goals match","Budgets moved toward cost per qualified lead","Locations, languages and exclusions correct","No disapproved ads or silent ads","Landing pages checked on a phone","Top three fixes written with owners"]))
+FIGS['lp-anatomy']=("Diagram: the order of blocks on a lead page, each with one job.",steps("Lead page anatomy","One job per block",[("Headline and main action","Repeat the ad promise; one button"),("Proof strip","Real logos, ratings with source"),("Three benefits","Outcome first, feature second"),("How it works","Three steps in plain words"),("Proof, FAQ, final action","Answer last doubts; repeat the button")],hl_last=True,numbered=False,rowh=60,gap=12))
+FIGS['lp-launch']=("Diagram: the launch path for a landing page, from soft launch to scale.",steps("Landing page launch","Test the whole path before spending",[("Build and review the code","Forms, links, tracking, no extras"),("Track once","Conversion fires on the thank you page only"),("Test devices and lead path","Phone, form, CRM, reply, sales alert"),("Soft launch","Small budget; watch 24 hours"),("Scale","Raise spend after the path works")],rowh=60,gap=12))
+FIGS['lp-speed']=("Checklist: eight fixes that make a landing page load faster on mobile.",checklist("Landing page speed","Fix images, scripts and fonts first",["Images resized to the size they display","Images compressed and in a modern format","Image width and height set in the page","Only the scripts the page needs","Tracking scripts loaded without blocking","One or two fonts, with a system fallback","Nothing large above the first screen except the headline","Tested on a mid range phone over mobile data"]))
+FIGS['cons-select']=("Diagram: the steps to choose an agentic AI consultant, ending in a short paid pilot.",steps("Choosing a consultant","From problem to a short paid pilot",[("Write the problem and number","Not the tool; the result"),("Shortlist three types","Independent, studio, other"),("Same brief, same questions","Nine questions, notes in one sheet"),("Live demo and written proposal","Real data, real errors"),("Score, check references","Evidence over charm"),("Sign a 2 to 4 week pilot","Decide after the numbers")],hl_last=True,rowh=56,gap=10))
+FIGS['cons-pilot']=("Timeline: a four week pilot, from access to a written decision.",stages("Four week pilot","One task, one number, one decision",["Week 1","Week 2","Week 3","Week 4"],[["Map the process. Design on paper","Build read-only. Test on old data","Draft mode with approvals. Log edits","Review numbers. Keep, widen or stop"],["You review the design","You compare with manual results","You approve drafts","You receive documents and training"]],rowh=96))
+FIGS['dm-audit']=("Diagram: the order of a paid marketing audit, tracking first.",steps("A paid marketing audit","Tracking first, then the rest",[("Kickoff and access","Goals, margins, view access in your name"),("Tracking audit","Test conversions; compare with the CRM"),("Funnel, campaigns, pages","Find the biggest drop and the biggest waste"),("Follow up review","Reply time, scripts, CRM stages"),("Report and 30 day plan","Evidence, impact, effort, owner")],hl_last=True,rowh=60,gap=12))
+FIGS['dm-review']=("Checklist: seven steps for a monthly review meeting with your consultant.",checklist("Monthly review","Forty five minutes, decisions in writing",["Read the one page summary before the call","Check cost per qualified lead against target","Ask for the cause in the data, not a guess","Review last month's actions and results","Pick one to three tests with a decision date","Agree budget changes with reasons","Send written notes the same day"]))
+FIGS['dm-own']=("Checklist: what you should own when a consultant finishes.",checklist("What you should own","Good consultants leave you in control",["Ad accounts, analytics and domains in your name","All logins listed, shared securely","Reports, audits and the 90 day plan","Creative files and landing page code","Tracking setup notes and tag manager access","A recorded walkthrough and training session"]))

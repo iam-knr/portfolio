@@ -1,0 +1,64 @@
+<h2>Where AI fits in the funnel</h2>
+<p>A funnel is a way to see where people drop off. AI can help at each stage, but the help is different. Here is the map I use when a business asks "where do we start?"</p>
+<!--FIG:aim-funnel-->
+<div class="tablewrap"><table>
+<thead><tr><th>Stage</th><th>Question</th><th>AI help</th><th>Human job</th></tr></thead>
+<tbody>
+<tr><td>Awareness</td><td>Do the right people see us?</td><td>Creative variants, audience research, content briefs</td><td>Choose message and channel</td></tr>
+<tr><td>Interest</td><td>Do they click and read?</td><td>Landing page checks, headline tests</td><td>Decide offer and proof</td></tr>
+<tr><td>Decision</td><td>Do they enquire?</td><td>Lead scoring, instant reply drafts</td><td>Handle price and objections</td></tr>
+<tr><td>Purchase</td><td>Do they buy?</td><td>Follow up reminders, call summaries</td><td>Close the sale</td></tr>
+<tr><td>Retention</td><td>Do they come back?</td><td>Churn flags, reply drafts, review monitoring</td><td>Fix the cause of churn</td></tr>
+</tbody></table></div>
+<p>Most teams jump to awareness because creative is fun. The money is often at decision and retention, where a fast reply or a clean follow up matters more than a new ad.</p>
+
+<h2>SOP: A 30 day AI pilot for a marketing team</h2>
+<div class="sop"><h3>SOP 8: 30 day pilot <span>Owner: head of marketing. Team time: 2 hours a week</span></h3><div class="in">
+<ol>
+<li><strong>Week 1. Time audit.</strong> Ask each person to list weekly tasks and the hours each takes for two weeks. Do not guess.</li>
+<li><strong>Week 1. Pick two tasks.</strong> Choose repeated, checkable tasks, such as weekly reports and first draft copy. Avoid anything customer-facing for now.</li>
+<li><strong>Week 1. Set the baseline.</strong> Write the current hours and error rate for each task.</li>
+<li><strong>Week 2. Write the rules.</strong> One page: what data may go into AI tools, what must never go in (customer lists, contracts, passwords), who approves outputs.</li>
+<li><strong>Week 2. Build the prompts.</strong> Save the best prompt for each task in a shared doc with an example output.</li>
+<li><strong>Week 3. Run in parallel.</strong> Do the task the old way and the new way. Compare time and quality.</li>
+<li><strong>Week 4. Decide.</strong> If the new way saves at least a third of the time with no drop in quality, adopt it for that task.</li>
+<li><strong>Week 4. Write the lesson.</strong> One page of what worked, what failed and the next two tasks.</li>
+</ol>
+<div class="meta">Output: two adopted tasks, a prompt library, a data rule sheet. Stop rule: if quality drops, keep the human version and try a smaller piece of the task.</div>
+</div></div>
+<!--FIG:aim-pilot-->
+
+<h2>Prompt templates that I actually reuse</h2>
+<div class="tpl"><b class="t">Research summary</b>
+You are helping a marketing team. Here are 40 customer reviews. Group them by theme. For each theme give a name, how many reviews mention it, and two exact quotes. List themes in order of count. Do not add themes that are not in the reviews.</div>
+<div class="tpl"><b class="t">Ad copy angles</b>
+Product: [one line]. Audience: [who, where]. Offer: [what, price if allowed]. Write 5 primary text options, each with a different angle: price, speed, trust, proof, fear of missing out. Label each by angle. Maximum 40 words each. No claims that need proof I have not given.</div>
+<div class="tpl"><b class="t">Report note</b>
+Here are this week's numbers [table]. Write a note for a business owner in plain words. Three parts: what moved, the likely reason from the data, one action. If the data does not show the reason, say so.</div>
+<p>All three share a pattern: give the data, say who reads it, set a shape for the answer, and tell the model what to do when it does not know. That last line saves you from many confident wrong answers.</p>
+
+<h2>Data rules you should write before anyone uses a tool</h2>
+<ul>
+<li><strong>Never paste</strong> customer phone numbers, emails, payment details, passwords or signed contracts into a public AI tool.</li>
+<li><strong>Anonymize</strong> when you need help with real data. Replace names and numbers with labels.</li>
+<li><strong>Check the tool's terms</strong> on whether your inputs are used to train models. Business plans often differ from free plans.</li>
+<li><strong>Keep client data</strong> inside tools your client agreement allows. Ask if unsure.</li>
+<li><strong>India context.</strong> The Digital Personal Data Protection Act, 2023 sets duties on handling personal data. Take professional advice on what applies to you.</li>
+</ul>
+
+<h2>Measuring AI work honestly</h2>
+<p>People love to say "AI saved us 10 hours." Ask how they know. Here is a simple method.</p>
+<ol>
+<li>Time the task by hand three times and take the average.</li>
+<li>Time the AI-assisted version three times, including your checking time.</li>
+<li>Compare error rates by checking ten outputs from each.</li>
+<li>Count only the net gain. A fast draft that needs two hours of repair is not a saving.</li>
+</ol>
+
+<h2>Three small stories of where AI went wrong</h2>
+<p>These are patterns I have seen or been told about, described in general terms, not about named clients.</p>
+<ul>
+<li><strong>The invented statistic.</strong> A blog draft included a percentage that sounded right. Nobody checked it. It was wrong and was later quoted by someone else. Fix: every number needs a source link before publishing.</li>
+<li><strong>The off-brand reply.</strong> An auto-reply was friendly but promised a refund policy that did not exist. Fix: replies use fixed templates and the model only fills names and product.</li>
+<li><strong>The tracking tag.</strong> A generated landing page changed a tracking snippet and conversions were not recorded for a week. Fix: test conversion tracking on every page change.</li>
+</ul>

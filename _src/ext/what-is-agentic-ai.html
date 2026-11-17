@@ -1,0 +1,75 @@
+<h2>Anatomy of one agent run, with a worked example</h2>
+<p>Definitions only go so far. Here is one run of a simple agent, written out the way I read it in a log. The task is real in kind, but the numbers are made up for illustration.</p>
+<div class="ex"><b class="t">Illustrative example</b>
+<p><strong>Goal given:</strong> "Tell me which of our five active Google Ads campaigns spent more than 110 percent of daily budget yesterday, and why."</p>
+<ol>
+<li><strong>Plan.</strong> The agent writes: I need yesterday's cost and budget per campaign, then a reason for any overspend.</li>
+<li><strong>Act 1.</strong> It calls the tool <code>get_campaign_costs(date=yesterday)</code>. The tool returns five rows.</li>
+<li><strong>Observe 1.</strong> Campaign C is at 142 percent of its budget. The others are under 105.</li>
+<li><strong>Act 2.</strong> It calls <code>get_budget_changes(campaign=C)</code>. The result shows no change in budget. It then calls <code>get_search_terms(campaign=C, date=yesterday)</code>.</li>
+<li><strong>Observe 2.</strong> One broad keyword pulled in many clicks from a term unrelated to the offer.</li>
+<li><strong>Stop.</strong> It reports: Campaign C overspent because of one broad keyword. Here are the three terms and their cost. I did not change anything.</li>
+</ol>
+<p>Count the steps: one plan, three tool calls, one report. That is a small agent. A person doing it by hand would open three screens and copy numbers into a sheet. The agent did it in seconds, and every step is in the log, so you can check it.</p></div>
+<!--FIG:agentic-run-->
+<p>Look at what the agent did not do. It did not pause the keyword. It did not raise or lower any budget. It stopped at a report. That choice was made by the person who designed it, not by the model. This is the most important design decision in agentic work, and I cover it next.</p>
+
+<h2>How much freedom should the agent have?</h2>
+<p>Think of freedom as a ladder with four rungs. Each rung adds power and adds risk. Most useful agents live on rung one or two.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Rung</th><th>What the agent may do</th><th>Typical task</th><th>Risk</th></tr></thead>
+<tbody>
+<tr><td>1. Read and report</td><td>Read data, write a summary</td><td>Daily ad account watcher</td><td>Low. Worst case is a wrong summary</td></tr>
+<tr><td>2. Draft for approval</td><td>Prepare an action and wait for a human click</td><td>Reply drafts, negative keyword lists</td><td>Low to medium</td></tr>
+<tr><td>3. Act inside limits</td><td>Act alone, but only within hard caps</td><td>Pause an ad that broke a rule</td><td>Medium</td></tr>
+<tr><td>4. Act freely</td><td>Choose and run actions with few limits</td><td>Almost nothing in marketing should be here</td><td>High</td></tr>
+</tbody></table></div>
+<p>My rule: start every new agent on rung one for two weeks. Move it to rung two only after you have checked its reports against reality and found them right. Move to rung three only for actions that are easy to undo.</p>
+
+<h2>SOP: Build your first agent safely</h2>
+<div class="sop"><h3>SOP 1: First agent in five working days <span>Owner: you. Time: about 6 hours in total</span></h3><div class="in">
+<ol>
+<li><strong>Day 1. Pick the task.</strong> Choose work that is repeated weekly, takes under an hour by hand, and has no money movement. Write the manual steps as a numbered list.</li>
+<li><strong>Day 1. Write the success number.</strong> Example: "Report matches my own check on at least 9 of 10 items". Put it in writing before you build.</li>
+<li><strong>Day 2. List the tools.</strong> Each data source becomes one tool. Give each tool read-only access. Name tools by what they do, such as <code>read_costs</code>.</li>
+<li><strong>Day 2. Write the brief.</strong> Use the template below. Keep it under 200 words.</li>
+<li><strong>Day 3. Build and run on old data.</strong> Use last week's data where you already know the answer.</li>
+<li><strong>Day 4. Compare.</strong> Check every claim in the output against the source. Mark each one right or wrong.</li>
+<li><strong>Day 4. Fix the brief, not the model.</strong> Most errors come from vague rules. Add one rule per error.</li>
+<li><strong>Day 5. Switch on for real, still read-only.</strong> Add a step cap and an alert if the run fails.</li>
+<li><strong>Week 3. Review.</strong> If the success number held for ten runs, decide: keep, widen, or stop.</li>
+</ol>
+<div class="meta">Output: one working read-only agent, one log, one written decision. Stop rule: if after day 4 more than 2 in 10 claims are wrong, shrink the task before adding anything.</div>
+</div></div>
+<div class="tpl"><b class="t">Template: agent brief</b>
+Goal: one sentence with a number and a time.<br>
+Inputs: which tools it may call and what each returns.<br>
+Rules: what counts as a problem, with thresholds.<br>
+Evidence: every number must name its source.<br>
+Limits: maximum 8 steps. Read only. Never send, spend or delete.<br>
+Output: three lines, in plain words, ranked by importance.<br>
+If unsure: say what is unknown. Do not guess.</div>
+
+<h2>Agentic AI in the real world: a checklist before you trust it</h2>
+<!--FIG:agentic-checklist-->
+<p>Print this list. Each box is a question you can answer yes or no. A "no" is not a failure. It tells you which control to add before going further.</p>
+
+<h2>Words people mix up</h2>
+<ul>
+<li><strong>Agent.</strong> One piece of software that pursues a goal with tools.</li>
+<li><strong>Agentic.</strong> A description of behavior: plans, acts, checks, repeats. A system can be more or less agentic.</li>
+<li><strong>Multi-agent.</strong> Several agents with different jobs that pass work to each other. Useful for big tasks. Harder to test.</li>
+<li><strong>Workflow.</strong> A fixed path of steps. An agent chooses its path. Many good systems mix both: a fixed workflow with one step where an agent decides.</li>
+<li><strong>Tool.</strong> Any action the agent may call, such as "read sheet" or "send message".</li>
+<li><strong>Guardrail.</strong> A hard limit the agent cannot reason its way around, such as a spend cap or a read-only key.</li>
+<li><strong>Human in the loop.</strong> A person approves before the action runs.</li>
+</ul>
+
+<h2>Five myths I hear in client calls</h2>
+<ol>
+<li><strong>"An agent will replace my team."</strong> It replaces tasks, not people. The team still sets goals, reviews and handles judgment calls.</li>
+<li><strong>"More autonomy is always better."</strong> No. Each step up in freedom needs more testing. Take the least freedom that does the job.</li>
+<li><strong>"The model is the product."</strong> The model is one part. Tools, rules, logs and approvals decide whether the system is safe and useful.</li>
+<li><strong>"It works in the demo, so it will work."</strong> Demos use clean data. Test on messy, old, real data.</li>
+<li><strong>"We need to build a big system first."</strong> Start with one small read-only agent. You learn more from one week of that than from a month of planning.</li>
+</ol>

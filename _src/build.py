@@ -1,6 +1,6 @@
 import re,json,glob,os,html,sys
 sys.path.insert(0,'_src')
-from ig import IGS
+from ig import IGS,FIGS
 import hero
 BASE="https://iamknr.in"
 DATE="2026-11-17"
@@ -43,7 +43,7 @@ def page(title,desc,path,body,schema,kw="",ptype="article",img=None):
 <meta name="twitter:image" content="{img}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script>
 {FONTS}
-<link rel="stylesheet" href="/blog/blog.css?v=4">
+<link rel="stylesheet" href="/blog/blog.css?v=5">
 </head><body>
 {HEADER}
 {body}
@@ -64,10 +64,13 @@ def faqs(body):
     return out
 for a in arts:
     body=a['body']
+    if os.path.exists(f'_src/ext/{a["slug"]}.html'):
+        body=body.replace('<h2>Frequently asked questions</h2>',open(f'_src/ext/{a["slug"]}.html',encoding='utf8').read()+'\n<h2>Frequently asked questions</h2>')
     heads=[]
     def addid(m):
         t=m.group(1);i=slugify(t);heads.append((i,re.sub(r'<[^>]+>','',t)));return f'<h2 id="{i}">{t}</h2>'
     body=re.sub(r'<h2>(.*?)</h2>',addid,body)
+    body=re.sub(r'<!--FIG:([\w-]+)-->',lambda m:'<figure class="ig">'+FIGS[m.group(1)][1]+'<figcaption>'+html.escape(FIGS[m.group(1)][0])+'</figcaption></figure>',body)
     if a['slug'] in IGS:
         cap,svg=IGS[a['slug']]
         fig=f'<figure class="ig">{svg}<figcaption>{html.escape(cap)}</figcaption></figure>'

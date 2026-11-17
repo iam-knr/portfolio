@@ -1,0 +1,69 @@
+<h2>A request, step by step, with the actual messages</h2>
+<p>MCP uses a message format called JSON-RPC. You do not need to write it, but seeing it once removes the mystery. Below is a simplified view of what happens when you ask an assistant, "Which campaigns spent over budget yesterday?" The exact fields vary by server, so treat this as a sketch.</p>
+<div class="tpl"><b class="t">Simplified exchange</b>
+Client asks the server: <code>tools/list</code><br>
+Server answers: a list such as <code>get_campaigns</code> (inputs: date) and <code>get_budget</code> (inputs: campaign_id)<br>
+Model decides: call <code>get_campaigns</code> with date = yesterday<br>
+Client sends: <code>tools/call</code> with name and arguments<br>
+Server runs it against the ad platform and returns rows<br>
+Model reads the rows and writes the answer</div>
+<!--FIG:mcp-sequence-->
+<p>Two details matter for safety. First, the model only sees the tool names, the descriptions and the results. The key to the ad platform stays inside the server. Second, the tool description is text that the model reads. A badly written or hostile description can steer the model, which is why you should only run servers you trust.</p>
+
+<h2>Local and remote servers</h2>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>Local server</th><th>Remote server</th></tr></thead>
+<tbody>
+<tr><td>Where it runs</td><td>On your own computer</td><td>On a hosted address</td></tr>
+<tr><td>Typical use</td><td>Files on your machine, a local database</td><td>Shared tools: CRM, analytics, ad platforms</td></tr>
+<tr><td>Sign in</td><td>Usually none or a local key</td><td>Usually a sign in flow with permissions you approve</td></tr>
+<tr><td>Main risk</td><td>Full access to what the program can touch on your machine</td><td>Broad permissions granted in one click</td></tr>
+<tr><td>Good habit</td><td>Limit it to one folder or one database</td><td>Read the permission screen. Approve read-only first</td></tr>
+</tbody></table></div>
+
+<h2>SOP: Connect your first MCP server safely</h2>
+<div class="sop"><h3>SOP 4: First MCP connection <span>Owner: you or your technical lead. Time: 1 to 2 hours</span></h3><div class="in">
+<ol>
+<li><strong>Choose the data.</strong> Pick one source you read often, such as a reports folder or your analytics. Avoid anything that writes.</li>
+<li><strong>Check the server.</strong> Who made it? Is the code open? When was it last updated? Does it ask for more access than the job needs? If you cannot answer, pick another server.</li>
+<li><strong>Create a limited account.</strong> Make a read-only user or key just for this server. Never reuse an admin key.</li>
+<li><strong>Install and connect.</strong> Add the server in your AI app's settings. Paste the limited key into the setting the server asks for, not into the chat.</li>
+<li><strong>List the tools.</strong> Ask the assistant what tools the server offers. Compare with what the server's page says. Any surprise means stop.</li>
+<li><strong>Run five real questions.</strong> Use questions whose answers you know. Check each one.</li>
+<li><strong>Turn on approvals.</strong> Keep the setting that asks you before each tool call.</li>
+<li><strong>Log it.</strong> Write the date, server, key name and who approved it in a simple sheet.</li>
+<li><strong>Review in 30 days.</strong> Remove anything you did not use.</li>
+</ol>
+<div class="meta">Output: one working, read-only connection with a record. Stop rule: if the server asks for write or admin access it does not need, do not install it.</div>
+</div></div>
+<!--FIG:mcp-sop-->
+
+<h2>SOP: Wrap your own script as an MCP server</h2>
+<p>This is the part developers enjoy. You have a script that does something useful, such as "fetch yesterday's cost from our ad account". Wrapping it as an MCP server lets any compatible assistant call it. Keep the first version tiny.</p>
+<div class="sop"><h3>SOP 5: One-tool server <span>Owner: developer. Time: half a day</span></h3><div class="in">
+<ol>
+<li><strong>Write the function first.</strong> It takes simple inputs and returns plain data. Test it alone.</li>
+<li><strong>Name it for the model.</strong> Use a clear name such as <code>get_daily_cost</code> and a one-line description that says what it returns and when to use it.</li>
+<li><strong>Declare inputs.</strong> List each input, its type and an example. Reject anything outside the allowed values.</li>
+<li><strong>Use the official SDK.</strong> Anthropic and others publish SDKs for common languages. Check the current docs for install steps, because they change.</li>
+<li><strong>Keep secrets out of output.</strong> Never return keys or private fields in results.</li>
+<li><strong>Add limits.</strong> Cap the rows returned and the calls per minute.</li>
+<li><strong>Test with an assistant.</strong> Ask five questions that should call the tool and three that should not.</li>
+<li><strong>Write the readme.</strong> What it does, what it can touch, what it cannot.</li>
+</ol>
+<div class="meta">Output: one tool, one readme, one test list. Add a second tool only after the first has run for a week without surprises.</div>
+</div></div>
+
+<h2>Tool design: small, clear, honest</h2>
+<ul>
+<li><strong>One job per tool.</strong> "get_daily_cost" is better than "do_ad_stuff".</li>
+<li><strong>Plain names.</strong> The model picks tools by name and description, so write them like instructions to a new colleague.</li>
+<li><strong>Few tools.</strong> Ten sharp tools beat fifty vague ones. Too many choices confuse the model.</li>
+<li><strong>Safe defaults.</strong> Read before write. Dry run before real run.</li>
+<li><strong>Useful errors.</strong> Return a message that says what went wrong and what to try next.</li>
+<li><strong>Stable output.</strong> Keep the shape of results the same from call to call.</li>
+</ul>
+
+<h2>Review checklist for any MCP server</h2>
+<!--FIG:mcp-checklist-->
+<p>Run this before you connect anything to real data. Most failures I have seen came from skipping one of these checks, not from clever attacks.</p>

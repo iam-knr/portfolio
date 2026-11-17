@@ -1,0 +1,71 @@
+<h2>Core n8n ideas you need on day one</h2>
+<ul>
+<li><strong>Node.</strong> One step. A trigger node starts the flow. Other nodes read, change or send data.</li>
+<li><strong>Item.</strong> A piece of data moving through the flow, such as one lead. Most nodes run once per item.</li>
+<li><strong>Expression.</strong> A small snippet inside a field that pulls data from an earlier node, for example the lead's phone number.</li>
+<li><strong>Credential.</strong> A saved key or login. Store it once, and reuse it in many nodes.</li>
+<li><strong>Execution.</strong> One run of the flow. n8n keeps a history so you can open any past run and see the data at each step.</li>
+<li><strong>Error workflow.</strong> A second flow that runs when the first one fails. Use it to alert yourself.</li>
+</ul>
+
+<h2>SOP: Build the lead response flow</h2>
+<p>This builds on workflow 1 above. I show it as a procedure so a teammate can follow it without you.</p>
+<div class="sop"><h3>SOP 6: Lead response in n8n <span>Owner: automation builder. Time: 1 to 2 days with testing</span></h3><div class="in">
+<ol>
+<li><strong>Trigger.</strong> Add a webhook or a form trigger. Send one test lead and open the output to see the field names.</li>
+<li><strong>Clean the data.</strong> Add a step that trims spaces, formats the phone number with the country code, and lowercases the email.</li>
+<li><strong>Check duplicates.</strong> Search the CRM by phone and email. If found, branch to a "tag existing lead" step and stop.</li>
+<li><strong>Classify.</strong> Add the AI Agent node. System message: label intent as ready, researching or not a fit, and quote the supporting answer.</li>
+<li><strong>Create the record.</strong> Write the lead and the label to the CRM.</li>
+<li><strong>Draft the message.</strong> Fill a pre-approved template. Do not let the model invent offers or prices.</li>
+<li><strong>Approval step.</strong> Send the draft to a team chat with approve and edit buttons. Wait for the answer.</li>
+<li><strong>Send.</strong> After approval, send through your WhatsApp or email provider. Log the message id.</li>
+<li><strong>Alert on silence.</strong> A second branch waits 30 minutes. If no human follow up appears, notify the owner.</li>
+<li><strong>Error workflow.</strong> Create a flow that posts to your chat on any failed run with the lead id and the failing node.</li>
+<li><strong>Test.</strong> Run twenty sample leads, including a duplicate, a bad phone number and an empty form. Fix what breaks.</li>
+</ol>
+<div class="meta">Output: one flow, one error flow, one test sheet. Go live in draft mode. Consider auto-send only after two weeks of clean approvals.</div>
+</div></div>
+<!--FIG:n8n-lead-flow-->
+
+<h2>SOP: Run n8n yourself</h2>
+<p>You can use the paid cloud service or host it yourself. If you host it, treat it like any small production service.</p>
+<div class="sop"><h3>SOP 7: Self-hosting basics <span>Owner: technical lead. Time: half a day, then monthly upkeep</span></h3><div class="in">
+<ol>
+<li><strong>Pick a server.</strong> A small cloud server is enough to start. Check n8n's docs for current minimum sizes.</li>
+<li><strong>Use the official install route.</strong> The docs describe a container setup. Follow the current steps instead of old blog posts.</li>
+<li><strong>Add a domain and HTTPS.</strong> Webhooks need a public address. Always use HTTPS.</li>
+<li><strong>Lock it down.</strong> Strong owner password, two step login where offered, no public sign up.</li>
+<li><strong>Back up.</strong> Schedule a daily backup of the database and the encryption key. Test a restore once.</li>
+<li><strong>Update on a schedule.</strong> Read release notes, update monthly, and keep one version of rollback.</li>
+<li><strong>Monitor.</strong> A simple uptime check that messages you if the server is down.</li>
+<li><strong>Write it down.</strong> One page: where it runs, who has access, how to restore.</li>
+</ol>
+<div class="meta">Output: a running instance with backups and a one page runbook. If nobody on your team can own this, use the cloud plan instead.</div>
+</div></div>
+<!--FIG:n8n-selfhost-->
+
+<h2>Reading the execution log</h2>
+<p>When something looks wrong, open the execution and work from the failing node backwards.</p>
+<ol>
+<li>Find the red node. Read the error text. Most errors say a field was empty or a key was refused.</li>
+<li>Click the node before it. Look at its output. Was the data you expected there?</li>
+<li>Compare with a good run. Differences in the input usually explain the failure.</li>
+<li>Fix the cause, then re-run with the saved data instead of waiting for a new lead.</li>
+</ol>
+
+<h2>Prompt template for the agent node</h2>
+<div class="tpl"><b class="t">System message template</b>
+Role: You review lead form answers for [business]. You do not talk to the customer.<br>
+Task: Label the lead as ready, researching or not a fit.<br>
+Rules: Quote the exact answer that supports the label. If the form is empty or unclear, label researching and say what is missing. Never invent facts. Never mention prices.<br>
+Output: JSON with label, reason and quote.</div>
+<p>Ask for a fixed output shape such as JSON. The next node can then read the label directly, with no guessing.</p>
+
+<h2>Cost and speed notes</h2>
+<ul>
+<li>Keep the prompt short and send only the fields the agent needs. Smaller inputs cost less and run faster.</li>
+<li>Use a smaller, cheaper model for simple labeling. Keep the larger model for tasks that need real reasoning.</li>
+<li>Cache lookups that rarely change, such as a price list.</li>
+<li>Watch the usage page of your model provider weekly for the first month.</li>
+</ul>
