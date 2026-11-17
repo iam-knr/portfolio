@@ -1,6 +1,7 @@
 import re,json,glob,os,html,sys
 sys.path.insert(0,'_src')
 from ig import IGS
+import hero
 BASE="https://iamknr.in"
 DATE="2026-11-17"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">'
@@ -19,7 +20,8 @@ arts.sort(key=lambda a:int(a['order']))
 HEADER=f'''<header class="top"><div class="wide"><a class="logo" href="/">K<b>N</b>R</a><nav aria-label="Main"><a href="/">Home</a><a href="/blog/">Articles</a><a href="/#hire">Hire</a><a href="https://linkedin.com/in/iamknr/" rel="noopener">LinkedIn</a></nav></div></header>'''
 AUTHOR='''<section class="author" aria-label="About the author"><img src="/blog/knr.png" width="150" height="150" alt="Kailas (KNR) Nath R working on his laptop" loading="lazy"><div><div class="lab">About the author</div><h2>Kailas (KNR) Nath R</h2><p class="role">Agentic AI Consultant and Digital Marketing Consultant, India</p><p>Kailas runs paid ads for enterprise and retail brands, builds AI agents and writes the code himself. He is co-founder of Ads Mentor, founder of Dealfox AI CRM, and has trained more than 4,000 marketers in live classes. He is the author of a book on social media ads. He writes here about what he actually builds and runs, and says plainly when something did not work.</p><ul class="facts"><li>7+ years in digital marketing</li><li>4,000+ marketers trained</li><li>Ads Mentor co-founder</li><li>Dealfox AI CRM founder</li><li>Based in India</li></ul><div class="links"><a href="https://linkedin.com/in/iamknr/" rel="me noopener">LinkedIn</a><a href="https://github.com/iam-knr/" rel="me noopener">GitHub</a><a href="https://aiinmarketing.in/author/kailasnathr" rel="me noopener">AI in Marketing</a><a href="https://adsmentor.in" rel="noopener">Ads Mentor</a><a href="https://amazon.in/dp/B0HPKN3W3D" rel="noopener">The book</a><a href="/#hire">Work with Kailas</a></div></div></section>'''
 FOOT='''<footer><div class="wide"><div class="row"><a href="/">Home</a><a href="/blog/">All articles</a><a href="/sitemap.xml">Sitemap</a><a href="/llms.txt">llms.txt</a><a href="https://github.com/iam-knr/">GitHub</a></div>&copy; 2026 Kailas (KNR) Nath R. Based in India.</div></footer>'''
-def page(title,desc,path,body,schema,kw="",ptype="article"):
+def page(title,desc,path,body,schema,kw="",ptype="article",img=None):
+    img=img or BASE+'/blog/knr.png'
     url=BASE+path
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,8 +36,11 @@ def page(title,desc,path,body,schema,kw="",ptype="article"):
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}/blog/knr.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{img}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{img}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script>
 {FONTS}
 <link rel="stylesheet" href="/blog/blog.css">
@@ -78,6 +83,7 @@ for a in arts:
     main=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / {html.escape(a['crumb'])}</div>
 <article><h1>{a['h1']}</h1><p class="dek">{a['dek']}</p>
 <div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="{DATE}">17 Nov 2026</time></span><span>{mins} min read</span></div>
+<figure class="hero"><img src="/blog/{a['slug']}/banner.svg" width="1200" height="630" alt="{html.escape(hero.CFG[a['slug']][5])}"></figure>
 <div class="answer"><b>Short answer</b><p>{a['answer']}</p></div>
 {toc}
 {body}
@@ -87,11 +93,11 @@ for a in arts:
 {AUTHOR}
 {relh}</div></main>'''
     fq=faqs(body)
-    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":DATE,"dateModified":DATE,"author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+"/blog/knr.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
+    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":DATE,"dateModified":DATE,"author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
            {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Articles","item":BASE+"/blog/"},{"@type":"ListItem","position":3,"name":a['crumb']}]},PERSON]
     if fq:graph.append({"@type":"FAQPage","mainEntity":fq})
     os.makedirs(f'blog/{a["slug"]}',exist_ok=True)
-    open(f'blog/{a["slug"]}/index.html','w',encoding='utf8').write(page(a['title'],a['desc'],f'/blog/{a["slug"]}/',main,{"@context":"https://schema.org","@graph":graph},a['kw']))
+    open(f'blog/{a["slug"]}/index.html','w',encoding='utf8').write(page(a['title'],a['desc'],f'/blog/{a["slug"]}/',main,{"@context":"https://schema.org","@graph":graph},a['kw'],img=BASE+f'/blog/{a["slug"]}/banner.png'))
 # index
 cards=''.join(f'<div class="card"><div class="k">{a["type"]}</div><h2><a href="/blog/{a["slug"]}/">{html.escape(a["h1"])}</a></h2><p>{a["desc"]}</p><div class="m">{max(1,round(a["words"]/220))} min read &middot; {a["words"]:,} words</div></div>' for a in arts)
 idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Articles</div><h1>Agentic AI, MCP and AI marketing, explained plainly</h1><p class="dek">Long guides from a working practitioner in India. Each one starts with a definition, shows how the thing works in real campaigns, and lists where it fails.</p>
