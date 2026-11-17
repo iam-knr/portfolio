@@ -83,7 +83,6 @@ for a in arts:
 {body}
 {cta}
 {BOOK}
-{aim(int(a['order'])-1)}
 </article>
 {AUTHOR}
 {relh}</div></main>'''
