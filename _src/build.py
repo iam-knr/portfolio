@@ -1,4 +1,6 @@
-import re,json,glob,os,html
+import re,json,glob,os,html,sys
+sys.path.insert(0,'_src')
+from ig import IGS
 BASE="https://iamknr.in"
 DATE="2026-11-17"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">'
@@ -42,6 +44,13 @@ def page(title,desc,path,body,schema,kw="",ptype="article"):
 {body}
 {FOOT}
 </body></html>'''
+
+BOOK='''<section class="book" aria-label="The book"><img src="https://aiinmarketing.in/wp-content/uploads/2026/11/the-ad-account-nobody-shows-you-book-banner.png" width="1200" height="630" alt="Cover of the book The Ad Account Nobody Shows You, Social Ads Zero to Pro, with 160+ screenshots and 75 step by step SOPs" loading="lazy"><div class="tx"><div class="lab">The book by Kailas</div><h2>The Ad Account Nobody Shows You</h2><p>Social Ads Zero to Pro, 2026 edition. A hands-on guide to paid social on Meta, LinkedIn, TikTok, Snapchat and X, with 160+ real screenshots, 75 step by step chapters and the rules Indian agencies follow.</p><div class="btns"><a class="p" href="https://amazon.in/dp/B0HPKN3W3D" rel="noopener">Get the book</a><a href="https://aiinmarketing.in/blogs/the-ad-account-nobody-shows-you-book" rel="noopener">Read about it</a></div></div></section>'''
+AIMALL=[("The 2.4 lakh mistake: who really owns your ad account?","who-owns-your-ad-account-case-study","Case study"),("Agentic AI: what to hand to AI agents","agentic-ai-marketing-work-competitors-hand-to-agents","Agentic AI"),("Six AI advertising mistakes that cost clients","ai-advertising-problems-nobody-posts-about","Ads"),("What is vibe marketing? A beginner guide","what-is-vibe-marketing","Definition"),("Zero-click AI search: stay visible and get leads","zero-click-ai-search-and-ads","SEO"),("Automated ad accounts: how marketers stay valuable","ad-accounts-run-themselves","Ads"),("Seven questions to ask before paying for an AI marketing course","ai-in-marketing-course-what-to-look-for","Training"),("Best digital marketing course in India, compared on fees and AI","best-digital-marketing-courses-india-2026-how-to-choose","Training")]
+def aim(idx):
+    pick=[AIMALL[(idx+k)%8] for k in (0,1,2,3)]
+    li=''.join(f'<li><a href="https://aiinmarketing.in/blogs/{u}" rel="noopener">{html.escape(t)}<span>{k} &rarr;</span></a></li>' for t,u,k in pick)
+    return f'<section class="aim" aria-label="Articles on AI in Marketing"><h2>More on AI in Marketing</h2><p class="sub">Articles from AIM, the live AI marketing program I teach.</p><ul>{li}</ul><a class="all" href="https://aiinmarketing.in/blogs" rel="noopener">View all articles on aiinmarketing.in &rarr;</a></section>'
 def faqs(body):
     out=[]
     for m in re.finditer(r'<details><summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>',body,re.S):
@@ -53,6 +62,11 @@ for a in arts:
     def addid(m):
         t=m.group(1);i=slugify(t);heads.append((i,re.sub(r'<[^>]+>','',t)));return f'<h2 id="{i}">{t}</h2>'
     body=re.sub(r'<h2>(.*?)</h2>',addid,body)
+    if a['slug'] in IGS:
+        cap,svg=IGS[a['slug']]
+        fig=f'<figure class="ig">{svg}<figcaption>{html.escape(cap)}</figcaption></figure>'
+        parts=body.split('<h2 id=',2)
+        body=parts[0]+'<h2 id='+parts[1]+fig+'<h2 id='+parts[2] if len(parts)==3 else body
     toc='<nav class="toc" aria-label="Table of contents"><b>In this article</b><ol>'+''.join(f'<li><a href="#{i}">{html.escape(t)}</a></li>' for i,t in heads)+'</ol></nav>'
     words=len(re.sub(r'<[^>]+>',' ',body).split())
     mins=max(1,round(words/220))
@@ -67,6 +81,8 @@ for a in arts:
 {toc}
 {body}
 {cta}
+{BOOK}
+{aim(int(a['order'])-1)}
 </article>
 {AUTHOR}
 {relh}</div></main>'''
@@ -80,6 +96,8 @@ for a in arts:
 cards=''.join(f'<div class="card"><div class="k">{a["type"]}</div><h2><a href="/blog/{a["slug"]}/">{html.escape(a["h1"])}</a></h2><p>{a["desc"]}</p><div class="m">{max(1,round(a["words"]/220))} min read &middot; {a["words"]:,} words</div></div>' for a in arts)
 idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Articles</div><h1>Agentic AI, MCP and AI marketing, explained plainly</h1><p class="dek">Long guides from a working practitioner in India. Each one starts with a definition, shows how the thing works in real campaigns, and lists where it fails.</p>
 <div class="cards">{cards}</div>
+{BOOK}
+{aim(0)}
 {AUTHOR}</div></main>'''
 g=[{"@type":"CollectionPage","name":"Articles on agentic AI, MCP and AI in marketing","url":BASE+"/blog/","author":{"@id":BASE+"/#kailas"},"hasPart":[{"@type":"Article","headline":a['h1'],"url":BASE+f"/blog/{a['slug']}/"} for a in arts]},PERSON]
 open('blog/index.html','w',encoding='utf8').write(page("Articles on Agentic AI, MCP and AI in Marketing | Kailas (KNR) Nath R","Definition-led guides on agentic AI, Model Context Protocol, AI in marketing, AI in advertising and AI landing pages, by Kailas (KNR) Nath R, an agentic AI consultant in India.","/blog/",idx,{"@context":"https://schema.org","@graph":g},ptype="website"))

@@ -78,3 +78,26 @@ footer{border-top:1px solid var(--ink);margin-top:50px;padding:26px 0 40px;font-
 footer a{color:var(--ink)}
 footer .row{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:10px}
 @media(max-width:620px){body{font-size:17px}.top nav{gap:12px;font-size:12px}}
+figure.ig{margin:34px 0;padding:0}
+figure.ig svg{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;border-radius:0}
+figure.ig figcaption{font-family:var(--mono);font-size:12.5px;color:var(--mute);text-align:center;margin-top:10px;line-height:1.5}
+.book{display:grid;grid-template-columns:1fr;gap:0;background:var(--card);border:1px solid var(--ink);margin:40px 0;box-shadow:8px 8px 0 var(--ink)}
+.book img{display:block;width:100%;height:auto;aspect-ratio:1200/630;background:#0b1b52}
+.book .tx{padding:22px 24px}
+.book .lab{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.book h2{margin:6px 0 6px;font-size:28px}
+.book p{font-size:16.5px;margin:0 0 14px}
+.book .btns{display:flex;flex-wrap:wrap;gap:10px}
+.book .btns a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font-weight:800;text-decoration:none;border:2px solid var(--ink);color:var(--ink);font-size:16px}
+.book .btns a.p{background:var(--red);border-color:var(--red);color:#fff}
+.book .btns a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.aim{margin:40px 0}
+.aim h2{margin:0 0 4px}
+.aim .sub{font-family:var(--serif);font-size:21px;color:var(--mute);margin:0 0 14px}
+.aim ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.aim li{margin:0;border-bottom:1px solid var(--rule)}
+.aim li a{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 4px;min-height:48px;color:var(--ink);text-decoration:none;font-weight:700;line-height:1.3}
+.aim li a:hover{color:var(--red)}
+.aim li a span{font-family:var(--mono);font-size:12px;color:var(--red);white-space:nowrap}
+.aim .all{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:13px;padding:10px 0}
+@media(min-width:760px){.book{grid-template-columns:1.1fr 1fr}.book img{height:100%;aspect-ratio:auto;object-fit:cover}}
