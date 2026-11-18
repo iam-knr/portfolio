@@ -86,20 +86,26 @@ for a in arts:
     rel=[x for x in arts if x['slug']!=a['slug']]
     relh='<h2 style="margin-top:40px">Keep reading</h2><div class="rel">'+''.join(f'<a href="/blog/{x["slug"]}/"><span>{x["type"]}</span>{html.escape(x["h1"])}</a>' for x in rel[:6])+'</div>'
     cta='<div class="cta"><h2>Want this built for your business?</h2><p>I work with brands in India that want agents, automation and ads that are tied to revenue. Tell me the goal and I will tell you honestly if I can help.</p><a class="btn" href="https://linkedin.com/in/iamknr/" rel="noopener">Message Kailas on LinkedIn</a> <a class="btn alt" href="https://topmate.io/iamknr" rel="noopener">Book a free call</a></div>'
+    MAGNET='<div class="magnet" id="free-checklist"><div class="lab">Free download</div><h2>Agentic AI Readiness Checklist (PDF)</h2><p>Twenty yes or no questions that show whether your business is ready for an AI agent: goals, data, tools, limits and people. Score yourself in 10 minutes and see which step to take first. No form, no email needed.</p><a class="btn" href="/downloads/agentic-ai-readiness-checklist.pdf" rel="noopener" download>Download the checklist</a></div>'
+    has_magnet='class="magnet"' in body
+    dl='' if has_magnet else '<p class="dl" style="font-size:15px;margin:-6px 0 18px">Free download: <a href="#free-checklist">Agentic AI Readiness Checklist (PDF)</a>, no form needed.</p>'
+    mag='' if has_magnet else MAGNET
     main=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / {html.escape(a['crumb'])}</div>
 <article><h1>{a['h1']}</h1><p class="dek">{a['dek']}</p>
 <div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="{a.get('date',DATE)}">{pubdisp(a.get('date',DATE))}</time></span><span>{mins} min read</span></div>
 <figure class="hero"><img src="/blog/{a['slug']}/banner.svg" width="1200" height="630" style="display:block;width:100%;max-width:100%;height:auto" alt="{html.escape(hero.CFG[a['slug']][5])}"></figure>
 <div class="answer"><b>Short answer</b><p>{a['answer']}</p></div>
+{dl}
 {toc}
 {body}
 {cta}
+{mag}
 {BOOK}
 </article>
 {AUTHOR}
 {relh}</div></main>'''
     fq=faqs(body)
-    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":a.get("date",DATE),"dateModified":a.get("date",DATE),"author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
+    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":a.get("date",DATE),"dateModified":"2026-11-18","author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
            {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Articles","item":BASE+"/blog/"},{"@type":"ListItem","position":3,"name":a['crumb']}]},PERSON]
     if fq:graph.append({"@type":"FAQPage","mainEntity":fq})
     os.makedirs(f'blog/{a["slug"]}',exist_ok=True)
@@ -114,7 +120,7 @@ idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Artic
 g=[{"@type":"CollectionPage","name":"Articles on agentic AI, MCP and AI in marketing","url":BASE+"/blog/","author":{"@id":BASE+"/#kailas"},"hasPart":[{"@type":"Article","headline":a['h1'],"url":BASE+f"/blog/{a['slug']}/"} for a in arts]},PERSON]
 open('blog/index.html','w',encoding='utf8').write(page("Articles on Agentic AI, MCP and AI in Marketing | Kailas (KNR) Nath R","Definition-led guides on agentic AI, Model Context Protocol, AI in marketing, AI in advertising and AI landing pages, by Kailas (KNR) Nath R, an agentic AI consultant in India.","/blog/",idx,{"@context":"https://schema.org","@graph":g},ptype="website"))
 # sitemap, robots, llms
-urls=[("/",1.0,"2026-11-18"),("/blog/",0.9,"2026-11-18")]+[(f"/blog/{a['slug']}/",0.8,a.get('date',DATE)) for a in arts]
+urls=[("/",1.0,"2026-11-18"),("/blog/",0.9,"2026-11-18")]+[(f"/blog/{a['slug']}/",0.8,"2026-11-18") for a in arts]
 open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{p}</priority></url>\n' for u,p,d in urls)+'</urlset>\n')
 open('robots.txt','w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 llms=f'''# Kailas (KNR) Nath R
