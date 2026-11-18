@@ -118,3 +118,10 @@ figure.hero{margin:22px 0 0;padding:0}figure.hero img{display:block;width:100%;h
 .tpl b.t{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#d81e16;margin-bottom:6px}
 .ex{border:2px dashed #151210;padding:12px 16px;margin:18px 0;background:#fff}
 .ex b.t{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+
+.cta a.btn.alt{background:transparent;color:#fff;border:2px solid #fff;margin-left:8px}
+.magnet{background:#fff3c4;border:2px solid var(--ink);border-left:8px solid var(--red);padding:24px;margin:36px 0}
+.magnet .lab{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:6px}
+.magnet h2{margin:0 0 8px;font-size:28px}
+.magnet p{margin:0 0 14px}
+.magnet a.btn{display:inline-block;background:var(--ink);color:#fff;padding:12px 20px;font-weight:800;text-decoration:none;min-height:44px}

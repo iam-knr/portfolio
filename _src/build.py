@@ -6,6 +6,9 @@ BASE="https://iamknr.in"
 DATE="2026-11-17"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">'
 PERSON={"@type":"Person","@id":BASE+"/#kailas","name":"Kailas (KNR) Nath R","alternateName":"KNR","url":BASE+"/","image":BASE+"/blog/knr.png","jobTitle":"Agentic AI Consultant and Digital Marketing Consultant","sameAs":["https://linkedin.com/in/iamknr/","https://github.com/iam-knr/","https://profiles.wordpress.org/kailasnathr/","https://aiinmarketing.in/author/kailasnathr","https://adsmentor.in"]}
+import datetime
+def pubdisp(d):
+    x=datetime.date.fromisoformat(d);return f'{x.day} {x.strftime("%b %Y")}'
 def slugify(t):
     t=re.sub(r'<[^>]+>','',t);t=html.unescape(t).lower();return re.sub(r'[^a-z0-9]+','-',t).strip('-')[:60]
 def parse(path):
@@ -43,7 +46,7 @@ def page(title,desc,path,body,schema,kw="",ptype="article",img=None):
 <meta name="twitter:image" content="{img}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script>
 {FONTS}
-<link rel="stylesheet" href="/blog/blog.css?v=5">
+<link rel="stylesheet" href="/blog/blog.css?v=6">
 </head><body>
 {HEADER}
 {body}
@@ -82,10 +85,10 @@ for a in arts:
     a['words']=words
     rel=[x for x in arts if x['slug']!=a['slug']]
     relh='<h2 style="margin-top:40px">Keep reading</h2><div class="rel">'+''.join(f'<a href="/blog/{x["slug"]}/"><span>{x["type"]}</span>{html.escape(x["h1"])}</a>' for x in rel[:6])+'</div>'
-    cta='<div class="cta"><h2>Want this built for your business?</h2><p>I work with brands in India that want agents, automation and ads that are tied to revenue. Tell me the goal and I will tell you honestly if I can help.</p><a class="btn" href="https://linkedin.com/in/iamknr/" rel="noopener">Message Kailas on LinkedIn</a></div>'
+    cta='<div class="cta"><h2>Want this built for your business?</h2><p>I work with brands in India that want agents, automation and ads that are tied to revenue. Tell me the goal and I will tell you honestly if I can help.</p><a class="btn" href="https://linkedin.com/in/iamknr/" rel="noopener">Message Kailas on LinkedIn</a> <a class="btn alt" href="https://topmate.io/iamknr" rel="noopener">Book a free call</a></div>'
     main=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / {html.escape(a['crumb'])}</div>
 <article><h1>{a['h1']}</h1><p class="dek">{a['dek']}</p>
-<div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="{DATE}">17 Nov 2026</time></span><span>{mins} min read</span></div>
+<div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="{a.get('date',DATE)}">{pubdisp(a.get('date',DATE))}</time></span><span>{mins} min read</span></div>
 <figure class="hero"><img src="/blog/{a['slug']}/banner.svg" width="1200" height="630" style="display:block;width:100%;max-width:100%;height:auto" alt="{html.escape(hero.CFG[a['slug']][5])}"></figure>
 <div class="answer"><b>Short answer</b><p>{a['answer']}</p></div>
 {toc}
@@ -96,7 +99,7 @@ for a in arts:
 {AUTHOR}
 {relh}</div></main>'''
     fq=faqs(body)
-    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":DATE,"dateModified":DATE,"author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
+    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":a.get("date",DATE),"dateModified":a.get("date",DATE),"author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
            {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Articles","item":BASE+"/blog/"},{"@type":"ListItem","position":3,"name":a['crumb']}]},PERSON]
     if fq:graph.append({"@type":"FAQPage","mainEntity":fq})
     os.makedirs(f'blog/{a["slug"]}',exist_ok=True)
@@ -111,8 +114,8 @@ idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Artic
 g=[{"@type":"CollectionPage","name":"Articles on agentic AI, MCP and AI in marketing","url":BASE+"/blog/","author":{"@id":BASE+"/#kailas"},"hasPart":[{"@type":"Article","headline":a['h1'],"url":BASE+f"/blog/{a['slug']}/"} for a in arts]},PERSON]
 open('blog/index.html','w',encoding='utf8').write(page("Articles on Agentic AI, MCP and AI in Marketing | Kailas (KNR) Nath R","Definition-led guides on agentic AI, Model Context Protocol, AI in marketing, AI in advertising and AI landing pages, by Kailas (KNR) Nath R, an agentic AI consultant in India.","/blog/",idx,{"@context":"https://schema.org","@graph":g},ptype="website"))
 # sitemap, robots, llms
-urls=[("/",1.0),("/blog/",0.9)]+[(f"/blog/{a['slug']}/",0.8) for a in arts]
-open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}{u}</loc><lastmod>{DATE}</lastmod><priority>{p}</priority></url>\n' for u,p in urls)+'</urlset>\n')
+urls=[("/",1.0,"2026-11-18"),("/blog/",0.9,"2026-11-18")]+[(f"/blog/{a['slug']}/",0.8,a.get('date',DATE)) for a in arts]
+open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{p}</priority></url>\n' for u,p,d in urls)+'</urlset>\n')
 open('robots.txt','w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 llms=f'''# Kailas (KNR) Nath R
 

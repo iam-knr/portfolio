@@ -15,14 +15,12 @@ Contact: https://linkedin.com/in/iamknr/
 - [AI Landing Page Development: Build, Test and Improve Pages With AI](https://iamknr.in/blog/ai-landing-page-development/): AI landing page development uses language models and coding agents to write, build and test landing pages faster. A 7 step process, a page checklist, testing ideas and the mistakes that hurt conversions.
 - [Best Agentic AI Consultant in India: How to Choose the Right One](https://iamknr.in/blog/best-agentic-ai-consultant-in-india/): How to pick an agentic AI consultant in India. What they do, 9 questions to ask, red flags, cost drivers, a comparison of consultant types and where Kailas (KNR) Nath R fits.
 - [Best Digital Marketing Consultant in India: A Buyer's Guide](https://iamknr.in/blog/best-digital-marketing-consultant-in-india/): How to choose a digital marketing consultant in India. What they do, how they differ from agencies, 10 questions to ask, red flags, pricing models, and where Kailas (KNR) Nath R fits.
+- [Agentic AI vs AI Agents vs Generative AI: The Difference, Explained for Marketers](https://iamknr.in/blog/agentic-ai-vs-ai-agents-vs-generative-ai/): Agentic AI, AI agents and generative AI are not the same thing. A plain comparison with one worked example, a table, 7 marketing uses, what to buy first and a free readiness checklist.
+- [Agentic AI for Indian SMEs: A Practical Guide With Costs, Use Cases and a 30 Day Plan](https://iamknr.in/blog/agentic-ai-for-indian-smes-automation-guide/): How an Indian small or mid size business can start with agentic AI. Five workflows to automate first, how costs work in rupees, a worked ROI example, a 30 day rollout plan, risks, and a free readiness checklist.
 
 ## Profiles
 - [LinkedIn](https://linkedin.com/in/iamknr/)
 - [GitHub](https://github.com/iam-knr/)
 - [Ads Mentor](https://adsmentor.in)
 - [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
-- [Medium](https://medium.com/@iamknathr)
-- [DEV Community](https://dev.to/iamknr)
-- [Topmate, free discovery call](https://topmate.io/iamknr)
-- [Gravatar](https://gravatar.com/nathrkailas)
 - [Shika AI desktop pet](https://shika.iamknr.in/)

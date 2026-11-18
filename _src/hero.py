@@ -13,6 +13,9 @@ CFG={
 'best-agentic-ai-consultant-in-india':(["Best agentic AI","consultant","in India"],"Six checks before you hire.","Hire",["Live demo","Limits","Pilot","Data","Ownership"],("Ask for proof","Start small"),"A hire decision hub with live demo, limits, pilot, data and ownership checks."),
 'best-digital-marketing-consultant-in-india':(["Best digital","marketing consultant","in India"],"What to ask and what to expect.","Fit",["Audit","Tracking","Ads","Funnel","Reports"],("Verify results","Paid trial first"),"A consultant fit hub with audit, tracking, ads, funnel and reports around it."),
 }
+CFG['agentic-ai-vs-ai-agents-vs-generative-ai']=(["Agentic AI vs","AI agents vs","generative AI"],"Which one does your business need first?","AI",["Generate","Agent","Agentic","Rules","Approve"],("Start small","Add limits"),"A hub comparing generative AI, AI agents and agentic AI, with rules and approvals.")
+CFG['agentic-ai-for-indian-smes-automation-guide']=(["Agentic AI for","Indian SMEs"],"One workflow. 30 days. Real numbers.","SME",["Leads","Reports","Quotes","Support","Payments"],("Draft mode first","Measure payback"),"An SME hub with leads, reports, quotes, support and payments workflows around it.")
+
 def pill(x,y,t,fill="#fff",tc=INK):
     w=len(t)*13+34
     return f'<rect x="{x-w/2:.0f}" y="{y-20}" width="{w}" height="40" rx="20" fill="{fill}" stroke="{INK}" stroke-width="2"/><text x="{x}" y="{y+6}" font-size="18" font-weight="700" fill="{tc}" text-anchor="middle" {F}>{e(t)}</text>'
