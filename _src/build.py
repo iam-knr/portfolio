@@ -137,6 +137,7 @@ Contact: https://linkedin.com/in/iamknr/
 - [GitHub](https://github.com/iam-knr/)
 - [Ads Mentor](https://adsmentor.in)
 - [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
+- [AdCheck, Meta ad rejection checker (Chrome extension)](https://adcheck.iamknr.in/)
 - [Shika AI desktop pet](https://shika.iamknr.in/)
 '''
 open('llms.txt','w').write(llms)
