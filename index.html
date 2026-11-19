@@ -431,7 +431,7 @@ a.cell:hover{background:transparent}
 #build-notes .cell{display:grid;grid-template-columns:1fr;gap:0;padding:0;min-height:0;border:1px solid var(--rule);border-radius:20px;background:rgba(255,255,255,.35)}
 #build-notes .cell.wide{grid-template-columns:minmax(0,520px) 1fr}
 #build-notes .cards .txt{display:flex;flex-direction:column;gap:10px;padding:22px 22px 24px}
-#build-notes .tile{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:14px 12px;border-radius:19px 19px 0 0;min-height:0;color:#f6f1e8}
+#build-notes .tile{position:relative;overflow:hidden;display:flex;flex-direction:row;align-items:center;justify-content:center;padding:14px 12px;border-radius:19px 19px 0 0;min-height:0;color:#f6f1e8}
 #build-notes .cell.wide .tile{border-radius:19px 0 0 19px}
 #build-notes .tile.r{background:var(--lime);--ac:var(--ink)}
 #build-notes .tile.k{background:var(--ink);--ac:var(--lime)}
@@ -448,6 +448,7 @@ a.cell:hover{background:transparent}
 .cards .cell{transition:border-color .2s,transform .2s,box-shadow .2s}
 .cards a.cell:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 10px 0 -4px rgba(21,18,16,.12)}
 
+@media (max-width:560px){#build-notes .tile{justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}#build-notes .ig{flex:none;width:490px;max-width:none}}
 /* about card */
 .me-card{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(20px,4vw,48px);align-items:center;margin-top:28px;border:1px solid var(--rule);border-radius:22px;padding:clamp(18px,3vw,32px);background:rgba(255,255,255,.35)}
 .me-card img{width:100%;height:auto;display:block}
