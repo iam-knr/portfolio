@@ -17,6 +17,10 @@ Contact: https://linkedin.com/in/iamknr/
 - [Best Digital Marketing Consultant in India: A Buyer's Guide](https://iamknr.in/blog/best-digital-marketing-consultant-in-india/): How to choose a digital marketing consultant in India. What they do, how they differ from agencies, 10 questions to ask, red flags, pricing models, and where Kailas (KNR) Nath R fits.
 - [Agentic AI vs AI Agents vs Generative AI: The Difference, Explained for Marketers](https://iamknr.in/blog/agentic-ai-vs-ai-agents-vs-generative-ai/): Agentic AI, AI agents and generative AI are not the same thing. A plain comparison with one worked example, a table, 7 marketing uses, what to buy first and a free readiness checklist.
 - [Agentic AI for Indian SMEs: A Practical Guide With Costs, Use Cases and a 30 Day Plan](https://iamknr.in/blog/agentic-ai-for-indian-smes-automation-guide/): How an Indian small or mid size business can start with agentic AI. Five workflows to automate first, how costs work in rupees, a worked ROI example, a 30 day rollout plan, risks, and a free readiness checklist.
+- [Shika AI: A Desktop Buddy That Types for You and Keeps You on Task](https://iamknr.in/blog/shika-ai-desktop-buddy-hobby-project/): Shika AI is a free, open source desktop buddy with offline voice typing, reminders, tasks and a focus timer. Why I built it and what it taught me about agents.
+- [AdCheck: A Free Chrome Extension That Catches Meta Ad Rejections Before You Publish](https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/): AdCheck reads your ad in Meta Ads Manager and flags wording likely to be rejected, with the reason and a safer fix. Free, for Indian advertisers.
+- [Programmatic SEO on WordPress: How I Build Pages in Bulk Without Making Thin Content](https://iamknr.in/blog/programmatic-seo-wordpress-plugin-big-seo-programmatic/): How programmatic SEO works, the rules I use to avoid thin pages, and Big SEO Programmatic, my free WordPress plugin with 100+ active installs.
+- [SafeStep Updates: A Free WordPress Plugin That Rolls Back Bad Plugin Updates](https://iamknr.in/blog/safestep-updates-wordpress-plugin-rollback/): SafeStep Updates saves a copy before every WordPress plugin update, checks your site after, and restores the old version if it breaks. Free, GPL, with limits.
 
 ## Profiles
 - [LinkedIn](https://linkedin.com/in/iamknr/)
@@ -24,4 +28,6 @@ Contact: https://linkedin.com/in/iamknr/
 - [Ads Mentor](https://adsmentor.in)
 - [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
 - [AdCheck, Meta ad rejection checker (Chrome extension)](https://adcheck.iamknr.in/)
-- [Shika AI desktop pet](https://shika.iamknr.in/)
+- [SafeStep Updates, WordPress plugin update rollback](https://safestep.iamknr.in/)
+- [Big SEO Programmatic, WordPress plugin](https://wordpress.org/plugins/knr-pseo-generator/)
+- [Shika AI, the desktop buddy](https://iam-knr.github.io/desktop-buddy/)

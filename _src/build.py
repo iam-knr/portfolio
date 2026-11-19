@@ -3,7 +3,7 @@ sys.path.insert(0,'_src')
 from ig import IGS,FIGS
 import hero
 BASE="https://iamknr.in"
-DATE="2026-11-17"
+DATE="2026-11-19"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">'
 PERSON={"@type":"Person","@id":BASE+"/#kailas","name":"Kailas (KNR) Nath R","alternateName":"KNR","url":BASE+"/","image":BASE+"/blog/knr.png","jobTitle":"Agentic AI Consultant and Digital Marketing Consultant","sameAs":["https://linkedin.com/in/iamknr/","https://github.com/iam-knr/","https://profiles.wordpress.org/kailasnathr/","https://aiinmarketing.in/author/kailasnathr","https://adsmentor.in"]}
 import datetime
@@ -84,11 +84,13 @@ for a in arts:
     mins=max(1,round(words/220))
     a['words']=words
     rel=[x for x in arts if x['slug']!=a['slug']]
+    _bl=[x for x in rel if x['type']=='Build log'];_ot=[x for x in rel if x['type']!='Build log'];rel=_bl[:3]+_ot[:3]
     relh='<h2 style="margin-top:40px">Keep reading</h2><div class="rel">'+''.join(f'<a href="/blog/{x["slug"]}/"><span>{x["type"]}</span>{html.escape(x["h1"])}</a>' for x in rel[:6])+'</div>'
     cta='<div class="cta"><h2>Want this built for your business?</h2><p>I work with brands in India that want agents, automation and ads that are tied to revenue. Tell me the goal and I will tell you honestly if I can help.</p><a class="btn" href="https://linkedin.com/in/iamknr/" rel="noopener">Message Kailas on LinkedIn</a> <a class="btn alt" href="https://topmate.io/iamknr" rel="noopener">Book a free call</a></div>'
     MAGNET='<div class="magnet" id="free-checklist"><div class="lab">Free download</div><h2>Agentic AI Readiness Checklist (PDF)</h2><p>Twenty yes or no questions that show whether your business is ready for an AI agent: goals, data, tools, limits and people. Score yourself in 10 minutes and see which step to take first. No form, no email needed.</p><a class="btn" href="/downloads/agentic-ai-readiness-checklist.pdf" rel="noopener" download>Download the checklist</a></div>'
     has_magnet='class="magnet"' in body
-    dl='' if has_magnet else '<p class="dl" style="font-size:15px;margin:-6px 0 18px">Free download: <a href="#free-checklist">Agentic AI Readiness Checklist (PDF)</a>, no form needed.</p>'
+    mm=re.search(r'class="magnet" id="([\w-]+)"><div class="lab">[^<]*</div><h2[^>]*>(.*?)</h2>',body)
+    dl=(f'<p class="dl" style="font-size:15px;margin:-6px 0 18px">Free download: <a href="#{mm.group(1)}">{mm.group(2)}</a>, no form needed.</p>' if mm else '') if has_magnet else '<p class="dl" style="font-size:15px;margin:-6px 0 18px">Free download: <a href="#free-checklist">Agentic AI Readiness Checklist (PDF)</a>, no form needed.</p>'
     mag='' if has_magnet else MAGNET
     main=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / {html.escape(a['crumb'])}</div>
 <article><h1>{a['h1']}</h1><p class="dek">{a['dek']}</p>
@@ -105,14 +107,14 @@ for a in arts:
 {AUTHOR}
 {relh}</div></main>'''
     fq=faqs(body)
-    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":a.get("date",DATE),"dateModified":"2026-11-18","author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
+    graph=[{"@type":"Article","@id":BASE+f"/blog/{a['slug']}/#article","headline":a['h1'],"description":a['desc'],"datePublished":a.get("date",DATE),"dateModified":"2026-11-19","author":{"@id":BASE+"/#kailas"},"publisher":{"@id":BASE+"/#kailas"},"mainEntityOfPage":BASE+f"/blog/{a['slug']}/","image":BASE+f"/blog/{a['slug']}/banner.png","inLanguage":"en-IN","keywords":a['kw'],"wordCount":words},
            {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Articles","item":BASE+"/blog/"},{"@type":"ListItem","position":3,"name":a['crumb']}]},PERSON]
     if fq:graph.append({"@type":"FAQPage","mainEntity":fq})
     os.makedirs(f'blog/{a["slug"]}',exist_ok=True)
     open(f'blog/{a["slug"]}/index.html','w',encoding='utf8').write(page(a['title'],a['desc'],f'/blog/{a["slug"]}/',main,{"@context":"https://schema.org","@graph":graph},a['kw'],img=BASE+f'/blog/{a["slug"]}/banner.png'))
 # index
 cards=''.join(f'<div class="card"><div class="k">{a["type"]}</div><h2><a href="/blog/{a["slug"]}/">{html.escape(a["h1"])}</a></h2><p>{a["desc"]}</p><div class="m">{max(1,round(a["words"]/220))} min read &middot; {a["words"]:,} words</div></div>' for a in arts)
-idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Articles</div><h1>Agentic AI, MCP and AI marketing, explained plainly</h1><p class="dek">Long guides from a working practitioner in India. Each one starts with a definition, shows how the thing works in real campaigns, and lists where it fails.</p>
+idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Articles</div><h1>Agentic AI, MCP and AI marketing, explained plainly</h1><p class="dek">Long guides from a working practitioner in India. Each one starts with a definition, shows how the thing works in real campaigns, and lists where it fails. The build logs cover the tools I made myself: a desktop buddy, a Chrome extension and two WordPress plugins.</p>
 <div class="cards">{cards}</div>
 {BOOK}
 {AIMCARD}
@@ -120,7 +122,7 @@ idx=f'''<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / Artic
 g=[{"@type":"CollectionPage","name":"Articles on agentic AI, MCP and AI in marketing","url":BASE+"/blog/","author":{"@id":BASE+"/#kailas"},"hasPart":[{"@type":"Article","headline":a['h1'],"url":BASE+f"/blog/{a['slug']}/"} for a in arts]},PERSON]
 open('blog/index.html','w',encoding='utf8').write(page("Articles on Agentic AI, MCP and AI in Marketing | Kailas (KNR) Nath R","Definition-led guides on agentic AI, Model Context Protocol, AI in marketing, AI in advertising and AI landing pages, by Kailas (KNR) Nath R, an agentic AI consultant in India.","/blog/",idx,{"@context":"https://schema.org","@graph":g},ptype="website"))
 # sitemap, robots, llms
-urls=[("/",1.0,"2026-11-18"),("/blog/",0.9,"2026-11-18")]+[(f"/blog/{a['slug']}/",0.8,"2026-11-18") for a in arts]
+urls=[("/",1.0,"2026-11-19"),("/blog/",0.9,"2026-11-19")]+[(f"/blog/{a['slug']}/",0.8,a.get("date","2026-11-18") if a.get("date","")>="2026-11-19" else "2026-11-18") for a in arts]
 open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{BASE}{u}</loc><lastmod>{d}</lastmod><priority>{p}</priority></url>\n' for u,p,d in urls)+'</urlset>\n')
 open('robots.txt','w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 llms=f'''# Kailas (KNR) Nath R
@@ -138,7 +140,9 @@ Contact: https://linkedin.com/in/iamknr/
 - [Ads Mentor](https://adsmentor.in)
 - [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
 - [AdCheck, Meta ad rejection checker (Chrome extension)](https://adcheck.iamknr.in/)
-- [Shika AI desktop pet](https://shika.iamknr.in/)
+- [SafeStep Updates, WordPress plugin update rollback](https://safestep.iamknr.in/)
+- [Big SEO Programmatic, WordPress plugin](https://wordpress.org/plugins/knr-pseo-generator/)
+- [Shika AI, the desktop buddy](https://iam-knr.github.io/desktop-buddy/)
 '''
 open('llms.txt','w').write(llms)
 print(len(arts),'articles',[ (a['slug'],a['words']) for a in arts])

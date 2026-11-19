@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdCheck: Free Chrome Extension to Catch Meta Ad Rejections</title>
+<meta name="description" content="AdCheck reads your ad in Meta Ads Manager and flags wording likely to be rejected, with the reason and a safer fix. Free, for Indian advertisers.">
+<meta name="author" content="Kailas (KNR) Nath R">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#ebe7df">
+<link rel="canonical" href="https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/">
+<meta property="og:site_name" content="Kailas (KNR) Nath R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AdCheck: Free Chrome Extension to Catch Meta Ad Rejections">
+<meta property="og:description" content="AdCheck reads your ad in Meta Ads Manager and flags wording likely to be rejected, with the reason and a safer fix. Free, for Indian advertisers.">
+<meta property="og:url" content="https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/">
+<meta property="og:image" content="https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/banner.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "@id": "https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/#article", "headline": "AdCheck: A Free Chrome Extension That Catches Meta Ad Rejections Before You Publish", "description": "AdCheck reads your ad in Meta Ads Manager and flags wording likely to be rejected, with the reason and a safer fix. Free, for Indian advertisers.", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "author": {"@id": "https://iamknr.in/#kailas"}, "publisher": {"@id": "https://iamknr.in/#kailas"}, "mainEntityOfPage": "https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/", "image": "https://iamknr.in/blog/adcheck-meta-ad-rejection-checker-chrome-extension/banner.png", "inLanguage": "en-IN", "keywords": "Meta ad rejection, why Meta ads get rejected, Meta ads policy checker, Chrome extension for Meta ads, ASCI ad rules, Facebook ad disapproved fix, AdCheck, Meta ads pre-check India", "wordCount": 1098}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://iamknr.in/"}, {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://iamknr.in/blog/"}, {"@type": "ListItem", "position": 3, "name": "AdCheck"}]}, {"@type": "Person", "@id": "https://iamknr.in/#kailas", "name": "Kailas (KNR) Nath R", "alternateName": "KNR", "url": "https://iamknr.in/", "image": "https://iamknr.in/blog/knr.png", "jobTitle": "Agentic AI Consultant and Digital Marketing Consultant", "sameAs": ["https://linkedin.com/in/iamknr/", "https://github.com/iam-knr/", "https://profiles.wordpress.org/kailasnathr/", "https://aiinmarketing.in/author/kailasnathr", "https://adsmentor.in"]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is AdCheck?", "acceptedAnswer": {"@type": "Answer", "text": "AdCheck is a free, open source Chrome extension that reads your ad inside Meta Ads Manager and flags wording and creatives likely to be rejected, with the reason and a safer fix."}}, {"@type": "Question", "name": "Why do Meta ads get rejected?", "acceptedAnswer": {"@type": "Answer", "text": "Most rejections come from wording that implies something Meta does not allow. Common ones are talking directly to a person's health or money situation, promising results, making income or placement claims, and using misleading style. Meta does not publish a banned word list."}}, {"@type": "Question", "name": "Is AdCheck free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the extension is free to download and open source. The optional Deep check reads image text with an AI model you choose, using your own key, so check that provider's pricing and limits before you use it."}}, {"@type": "Question", "name": "Does AdCheck send my ad copy anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Copy is checked inside the panel in your browser. Nothing leaves your browser unless you click Deep check on a creative."}}, {"@type": "Question", "name": "Will AdCheck guarantee my ad is approved?", "acceptedAnswer": {"@type": "Answer", "text": "No. It reduces avoidable rejections, but Meta also reviews images, landing pages and account history. A clean result is not a guarantee of approval."}}, {"@type": "Question", "name": "Does AdCheck work for Google Ads or LinkedIn Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet. Meta Ads is available today. Google Ads and LinkedIn Ads pre-checks are coming next."}}, {"@type": "Question", "name": "Who built AdCheck?", "acceptedAnswer": {"@type": "Answer", "text": "Kailas (KNR) Nath R built it with Team Ads Mentor, the live advertising training team in India."}}]}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/blog.css?v=6">
+</head><body>
+<header class="top"><div class="wide"><a class="logo" href="/">K<b>N</b>R</a><nav aria-label="Main"><a href="/">Home</a><a href="/blog/">Articles</a><a href="/#hire">Hire</a><a href="https://linkedin.com/in/iamknr/" rel="noopener">LinkedIn</a></nav></div></header>
+<main><div class="wrap"><div class="crumbs"><a href="/">Home</a> / <a href="/blog/">Articles</a> / AdCheck</div>
+<article><h1>AdCheck: A Free Chrome Extension That Catches Meta Ad Rejections Before You Publish</h1><p class="dek">Meta does not publish a banned word list, and the rejection notice rarely names the line that caused it. I built AdCheck to point at the line before you publish.</p>
+<div class="by"><img src="/blog/knr.png" width="44" height="44" alt="" loading="lazy"><span>By <strong><a href="/#about" style="color:inherit">Kailas (KNR) Nath R</a></strong></span><span>Published <time datetime="2026-11-19">19 Nov 2026</time></span><span>5 min read</span></div>
+<figure class="hero"><img src="/blog/adcheck-meta-ad-rejection-checker-chrome-extension/banner.svg" width="1200" height="630" style="display:block;width:100%;max-width:100%;height:auto" alt="An ad check hub with copy, creative, policy, fix and India rules around it."></figure>
+<div class="answer"><b>Short answer</b><p>AdCheck is a free Chrome extension that reads your ad inside Meta Ads Manager and marks the wording and creatives likely to be rejected. Hover a highlighted phrase to see the policy behind it, why it is a problem and a safer way to write it. It checks 25+ rules from Meta's published standards and Indian guidance from ASCI and CCPA. It is an early release, and a clean result is not a guarantee of approval.</p></div>
+<p class="dl" style="font-size:15px;margin:-6px 0 18px">Free download: <a href="#free-download">Meta Ad Pre-Publish Checklist for Indian Advertisers (PDF)</a>, no form needed.</p>
+<nav class="toc" aria-label="Table of contents"><b>In this article</b><ol><li><a href="#why-meta-ads-get-rejected">Why Meta ads get rejected</a></li><li><a href="#what-adcheck-does">What AdCheck does</a></li><li><a href="#what-it-checks">What it checks</a></li><li><a href="#where-adcheck-fits-in-an-ai-advertising-workflow">Where AdCheck fits in an AI advertising workflow</a></li><li><a href="#how-to-install-adcheck">How to install AdCheck</a></li><li><a href="#meta-ad-pre-publish-checklist-for-indian-advertisers-pdf">Meta Ad Pre-Publish Checklist for Indian Advertisers (PDF)</a></li><li><a href="#what-adcheck-does-not-do">What AdCheck does not do</a></li><li><a href="#frequently-asked-questions">Frequently asked questions</a></li></ol></nav>
+<h2 id="why-meta-ads-get-rejected">Why Meta ads get rejected</h2>
+<p>Meta has advertising standards, but it does not give you a list of banned words. An ad fails because of what the words imply. "Are you struggling with debt?" implies Meta knows something about the reader's finances. "Guaranteed income" is a promise. A placement claim with no proof is a claim.</p>
+<p>The rejection message usually quotes a policy name. It rarely tells you which sentence caused it. So you change something, resubmit, wait, and try again. Each round can cost a day. If the account gets flagged too often, it can cost much more than a day.</p>
+<p>I run ads for enterprise and retail brands and I train marketers. I keep seeing the same kinds of mistake. AdCheck is those patterns, put in front of you while you write.</p>
+
+<h2 id="what-adcheck-does">What AdCheck does</h2>
+<p>You open the side panel on an ad in Meta Ads Manager. It reads the ad and checks it straight away.</p>
+<ol>
+<li><strong>It reads your ad.</strong> Primary text, Headline and Description, plus the creatives in the preview. A Live mode re-checks as you edit.</li>
+<li><strong>It marks risky phrases.</strong> Hover any highlight to see the severity, the policy behind it, why it is a problem and how to fix it.</li>
+<li><strong>It suggests safer wording.</strong> Where there is a known fix, it shows a risky and a safer example side by side.</li>
+<li><strong>It knows India.</strong> It goes beyond Meta's rules to flag placement guarantees, salary figures and government approval claims that ASCI and CCPA look at.</li>
+<li><strong>It checks creatives.</strong> Quick local checks for layout, resolution and aspect ratio. An optional Deep check reads the text inside an image with an AI model you choose.</li>
+<li><strong>It keeps your copy private.</strong> Copy is checked inside the panel. Nothing leaves your browser unless you click Deep check on a creative.</li>
+</ol>
+
+<h2 id="what-it-checks">What it checks</h2>
+<p>There are 25+ rules, grouped like this. Each finding says where the rule comes from.</p>
+<ul>
+<li><strong>Personal attributes.</strong> "You" next to health, finances, age, religion or identity.</li>
+<li><strong>Health and wellness.</strong> Timeframe promises, cure claims, body-shaming, before and after.</li>
+<li><strong>Income claims.</strong> Specific earnings, passive income, "financial freedom".</li>
+<li><strong>Guarantees.</strong> Guaranteed returns, clients, jobs or results.</li>
+<li><strong>Financial products.</strong> Payday loans, crypto, "no credit check", assured returns.</li>
+<li><strong>Education and coaching in India.</strong> Placement and salary claims, "100% placement", pay-after-placement fees.</li>
+<li><strong>Endorsement claims.</strong> Government approval or certification without proof.</li>
+<li><strong>Misleading style.</strong> Clickbait, shouting, unproven "No. 1" claims.</li>
+</ul>
+<p>The education group matters in India because it is where many coaching ads go wrong. If you sell a course, state the support you give, such as interview prep and job application guidance. Do not state an outcome you cannot prove.</p>
+
+<h2 id="where-adcheck-fits-in-an-ai-advertising-workflow">Where AdCheck fits in an AI advertising workflow</h2>
+<p>More teams now draft ad copy with AI. That is fast, and it can produce a line like "guaranteed leads in 7 days" without anyone noticing. A language model does not know your account history or what Meta flagged last month.</p>
+<p>The safe pattern is the one I describe in <a href="/blog/ai-in-advertising-meta-google-ads/">AI in advertising</a> and <a href="/blog/agentic-ai-in-marketing/">agentic AI in marketing</a>: the agent drafts, a person approves, and a check runs before anything goes live. AdCheck is that check for Meta copy. It is a set of written rules, not another AI guessing. That makes its flags easy to read and easy to argue with.</p>
+<p>It is also a small example of AI automation done carefully. The job is repeatable, the rules are written down, and a person stays in charge of the publish button.</p>
+
+<h2 id="how-to-install-adcheck">How to install AdCheck</h2>
+<p>AdCheck is not on the Chrome Web Store yet, so you load it as an unpacked extension. It takes about a minute.</p>
+<ol>
+<li>Download the zip from <a href="https://adcheck.iamknr.in/" rel="noopener">adcheck.iamknr.in</a> (version 0.4.0 at the time of writing) and unzip it.</li>
+<li>Open <code>chrome://extensions</code> and turn on Developer mode.</li>
+<li>Click Load unpacked and choose the unzipped folder.</li>
+<li>Pin AdCheck, open your ad in Ads Manager, and click the icon or press Alt+Shift+A.</li>
+</ol>
+<p>The site has a browser demo you can try first, and a link to the source code.</p>
+
+<div class="magnet" id="free-download"><div class="lab">Free download</div><h2 id="meta-ad-pre-publish-checklist-for-indian-advertisers-pdf">Meta Ad Pre-Publish Checklist for Indian Advertisers (PDF)</h2><p>A two page checklist covering the eight groups above, plus creatives, landing page and account checks. Use it by hand, even if you never install the extension. No form, no email needed.</p><a class="btn" href="/downloads/meta-ad-pre-publish-checklist-india.pdf" rel="noopener" download>Download the checklist</a></div>
+
+<h2 id="what-adcheck-does-not-do">What AdCheck does not do</h2>
+<ul>
+<li><strong>It is an early release.</strong> The rules come from Meta's published standards and public guidance. They have not yet been checked against a large set of real rejections.</li>
+<li><strong>A clean result is not a guarantee.</strong> Meta also reviews images, landing pages and your account history.</li>
+<li><strong>Some creative checks are rough signals.</strong> Treat them as a prompt to look again.</li>
+<li><strong>It is for Meta Ads today.</strong> Google Ads and LinkedIn Ads checks are planned.</li>
+<li><strong>It is independent.</strong> It is not affiliated with or endorsed by Meta.</li>
+</ul>
+<p>If it flags something you think is fine, or misses something that got rejected, tell me. Those are the cases that improve the rules.</p>
+<p>One more habit that saves accounts: know who owns your ad account before you spend. I wrote about a case where that went wrong in <a href="https://aiinmarketing.in/blogs/who-owns-your-ad-account-case-study" rel="noopener">the 2.4 lakh mistake</a>. My book below also goes through ad accounts from the inside.</p>
+
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<details><summary>What is AdCheck?</summary><p>AdCheck is a free, open source Chrome extension that reads your ad inside Meta Ads Manager and flags wording and creatives likely to be rejected, with the reason and a safer fix.</p></details>
+<details><summary>Why do Meta ads get rejected?</summary><p>Most rejections come from wording that implies something Meta does not allow. Common ones are talking directly to a person's health or money situation, promising results, making income or placement claims, and using misleading style. Meta does not publish a banned word list.</p></details>
+<details><summary>Is AdCheck free?</summary><p>Yes, the extension is free to download and open source. The optional Deep check reads image text with an AI model you choose, using your own key, so check that provider's pricing and limits before you use it.</p></details>
+<details><summary>Does AdCheck send my ad copy anywhere?</summary><p>No. Copy is checked inside the panel in your browser. Nothing leaves your browser unless you click Deep check on a creative.</p></details>
+<details><summary>Will AdCheck guarantee my ad is approved?</summary><p>No. It reduces avoidable rejections, but Meta also reviews images, landing pages and account history. A clean result is not a guarantee of approval.</p></details>
+<details><summary>Does AdCheck work for Google Ads or LinkedIn Ads?</summary><p>Not yet. Meta Ads is available today. Google Ads and LinkedIn Ads pre-checks are coming next.</p></details>
+<details><summary>Who built AdCheck?</summary><p>Kailas (KNR) Nath R built it with Team Ads Mentor, the live advertising training team in India.</p></details>
+<div class="cta"><h2>Want this built for your business?</h2><p>I work with brands in India that want agents, automation and ads that are tied to revenue. Tell me the goal and I will tell you honestly if I can help.</p><a class="btn" href="https://linkedin.com/in/iamknr/" rel="noopener">Message Kailas on LinkedIn</a> <a class="btn alt" href="https://topmate.io/iamknr" rel="noopener">Book a free call</a></div>
+
+<section class="book" aria-label="The book"><img src="https://aiinmarketing.in/wp-content/uploads/2026/11/the-ad-account-nobody-shows-you-book-banner.png" width="1200" height="630" alt="Cover of the book The Ad Account Nobody Shows You, Social Ads Zero to Pro, with 160+ screenshots and 75 step by step SOPs" loading="lazy"><div class="tx"><div class="lab">The book by Kailas</div><h2>The Ad Account Nobody Shows You</h2><p>Social Ads Zero to Pro, 2026 edition. A hands-on guide to paid social on Meta, LinkedIn, TikTok, Snapchat and X, with 160+ real screenshots, 75 step by step chapters and the rules Indian agencies follow.</p><div class="btns"><a class="p" href="https://amazon.in/dp/B0HPKN3W3D" rel="noopener">Get the book</a><a href="https://aiinmarketing.in/blogs/the-ad-account-nobody-shows-you-book" rel="noopener">Read about it</a></div></div></section>
+</article>
+<section class="author" aria-label="About the author"><img src="/blog/knr.png" width="150" height="150" alt="Kailas (KNR) Nath R working on his laptop" loading="lazy"><div><div class="lab">About the author</div><h2>Kailas (KNR) Nath R</h2><p class="role">Agentic AI Consultant and Digital Marketing Consultant, India</p><p>Kailas runs paid ads for enterprise and retail brands, builds AI agents and writes the code himself. He is co-founder of Ads Mentor, founder of Dealfox AI CRM, and has trained more than 4,000 marketers in live classes. He is the author of a book on social media ads. He writes here about what he actually builds and runs, and says plainly when something did not work.</p><ul class="facts"><li>7+ years in digital marketing</li><li>4,000+ marketers trained</li><li>Ads Mentor co-founder</li><li>Dealfox AI CRM founder</li><li>Based in India</li></ul><div class="links"><a href="https://linkedin.com/in/iamknr/" rel="me noopener">LinkedIn</a><a href="https://github.com/iam-knr/" rel="me noopener">GitHub</a><a href="https://aiinmarketing.in/author/kailasnathr" rel="me noopener">AI in Marketing</a><a href="https://adsmentor.in" rel="noopener">Ads Mentor</a><a href="https://amazon.in/dp/B0HPKN3W3D" rel="noopener">The book</a><a href="/#hire">Work with Kailas</a></div></div></section>
+<h2 style="margin-top:40px">Keep reading</h2><div class="rel"><a href="/blog/shika-ai-desktop-buddy-hobby-project/"><span>Build log</span>Shika AI: A Desktop Buddy That Types for You and Keeps You on Task</a><a href="/blog/programmatic-seo-wordpress-plugin-big-seo-programmatic/"><span>Build log</span>Programmatic SEO on WordPress: How I Build Pages in Bulk Without Making Thin Content</a><a href="/blog/safestep-updates-wordpress-plugin-rollback/"><span>Build log</span>SafeStep Updates: A Free WordPress Plugin That Rolls Back Bad Plugin Updates</a><a href="/blog/what-is-agentic-ai/"><span>Definition</span>What Is Agentic AI? A Plain Definition With Real Examples</a><a href="/blog/agentic-ai-in-marketing/"><span>Guide</span>Agentic AI in Marketing: What It Is and How to Use It</a><a href="/blog/what-is-mcp-model-context-protocol/"><span>Definition</span>What Is MCP? Model Context Protocol Explained Without Jargon</a></div></div></main>
+<footer><div class="wide"><div class="row"><a href="/">Home</a><a href="/blog/">All articles</a><a href="/sitemap.xml">Sitemap</a><a href="/llms.txt">llms.txt</a><a href="https://github.com/iam-knr/">GitHub</a></div>&copy; 2026 Kailas (KNR) Nath R. Based in India.</div></footer>
+</body></html>

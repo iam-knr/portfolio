@@ -16,6 +16,11 @@ CFG={
 CFG['agentic-ai-vs-ai-agents-vs-generative-ai']=(["Agentic AI vs","AI agents vs","generative AI"],"Which one does your business need first?","AI",["Generate","Agent","Agentic","Rules","Approve"],("Start small","Add limits"),"A hub comparing generative AI, AI agents and agentic AI, with rules and approvals.")
 CFG['agentic-ai-for-indian-smes-automation-guide']=(["Agentic AI for","Indian SMEs"],"One workflow. 30 days. Real numbers.","SME",["Leads","Reports","Quotes","Support","Payments"],("Draft mode first","Measure payback"),"An SME hub with leads, reports, quotes, support and payments workflows around it.")
 
+CFG['shika-ai-desktop-buddy-hobby-project']=(["Shika AI,","the desktop","buddy"],"Voice typing that stays on your machine.","Buddy",["Talk","Remind","Tasks","Notes","Focus"],("Free and open source","Runs locally"),"A desktop buddy hub with talk, remind, tasks, notes and focus around it.")
+CFG['adcheck-meta-ad-rejection-checker-chrome-extension']=(["AdCheck for","Meta ads"],"Catch the rejection before you publish.","Check",["Copy","Creative","Policy","Fix","India"],("Hover for the reason","A person publishes"),"An ad check hub with copy, creative, policy, fix and India rules around it.")
+CFG['programmatic-seo-wordpress-plugin-big-seo-programmatic']=(["Programmatic SEO","on WordPress"],"Many pages. Each one worth reading.","pSEO",["Data","Template","Unique","Links","Launch"],("40% unique text","Launch in batches"),"A programmatic SEO hub with data, template, unique text, links and launch around it.")
+CFG['safestep-updates-wordpress-plugin-rollback']=(["SafeStep","Updates"],"Snapshot. Check. Roll back if it breaks.","Safe",["Snapshot","Install","Check","Roll back","Alert"],("Free plugin","Plugins only"),"A plugin update safety hub with snapshot, install, check, roll back and alert around it.")
+
 def pill(x,y,t,fill="#fff",tc=INK):
     w=len(t)*13+34
     return f'<rect x="{x-w/2:.0f}" y="{y-20}" width="{w}" height="40" rx="20" fill="{fill}" stroke="{INK}" stroke-width="2"/><text x="{x}" y="{y+6}" font-size="18" font-weight="700" fill="{tc}" text-anchor="middle" {F}>{e(t)}</text>'
