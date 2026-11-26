@@ -1,14 +1,14 @@
-slug: safestep-updates-wordpress-plugin-rollback
+slug: backstep-updates-wordpress-plugin-rollback
 order: 15
 date: 2026-11-19
 type: Build log
-crumb: SafeStep Updates
-title: SafeStep Updates: Update WordPress Plugins Without the Fear
-h1: SafeStep Updates: A Free WordPress Plugin That Rolls Back Bad Plugin Updates
-desc: SafeStep Updates saves a copy before every WordPress plugin update, checks your site after, and restores the old version if it breaks. Free, GPL, with limits.
-kw: WordPress plugin update rollback, rollback WordPress plugin, WordPress plugin update broke site, safe WordPress updates, automatic rollback plugin, SafeStep Updates, WordPress site down after update
-dek: Updates fix sites, and sometimes they break them. I built SafeStep so the fear of a bad update stops being the reason you skip updates.
-answer: SafeStep Updates is a free WordPress plugin that makes a copy of a plugin before every update, checks your home page, login page and any pages you list right after, and restores the old version if the update caused a new server error or PHP fatal. It covers manual, automatic and WP-CLI updates. It needs WordPress 6.0 or newer and PHP 7.4 or newer. It is not a backup plugin.
+crumb: Backstep Updates
+title: Backstep Updates: Update WordPress Plugins Without the Fear
+h1: Backstep Updates: A Free WordPress Plugin That Rolls Back Bad Plugin Updates
+desc: Backstep Updates saves a copy before every WordPress plugin update, checks your site after, and restores the old version if it breaks. Free, GPL, with limits.
+kw: WordPress plugin update rollback, rollback WordPress plugin, WordPress plugin update broke site, safe WordPress updates, automatic rollback plugin, Backstep Updates, WordPress site down after update
+dek: Updates fix sites, and sometimes they break them. I built Backstep so the fear of a bad update stops being the reason you skip updates.
+answer: Backstep Updates is a free WordPress plugin that makes a copy of a plugin before every update, checks your home page, login page and any pages you list right after, and restores the old version if the update caused a new server error or PHP fatal. It covers manual, automatic and WP-CLI updates. It needs WordPress 6.0 or newer and PHP 7.4 or newer. It is not a backup plugin.
 ---
 <h2>The problem: updates fix sites and break them</h2>
 <p>Every WordPress site owner knows the choice. Update a plugin and risk a broken site. Skip it and leave a known problem unfixed.</p>
@@ -21,8 +21,8 @@ answer: SafeStep Updates is a free WordPress plugin that makes a copy of a plugi
 </ol>
 <p>There is a cost for marketers too. If an ad campaign is live and the landing page returns an error, you pay for clicks that land on nothing. I check tracking before I touch a budget for the same reason. A site that is down is the same kind of leak.</p>
 
-<h2>How SafeStep works</h2>
-<p>WordPress installs the update the way it always does. SafeStep adds a copy before it, a check after it, and a way back. There are four steps.</p>
+<h2>How Backstep works</h2>
+<p>WordPress installs the update the way it always does. Backstep adds a copy before it, a check after it, and a way back. There are four steps.</p>
 <ol>
 <li><strong>Snapshot.</strong> The plugin's current files are copied into a protected folder just before they are replaced.</li>
 <li><strong>Install.</strong> WordPress installs the update as normal. Your workflow does not change.</li>
@@ -40,20 +40,20 @@ answer: SafeStep Updates is a free WordPress plugin that makes a copy of a plugi
 <li><strong>Email alerts.</strong> You know the moment something is rolled back.</li>
 <li><strong>Restore and log.</strong> Restore any snapshot in one click and see a history of every update, rollback and restore.</li>
 </ul>
-<p>Everything sits in one screen in WordPress, under Tools, then SafeStep. There you set auto-updates, exclude plugins, add pages like /checkout/, and set the alert email.</p>
+<p>Everything sits in one screen in WordPress, under Tools, then Backstep. There you add pages like /checkout/, choose how many snapshots to keep, and set the alert email.</p>
 
-<h2>SafeStep compared with WordPress itself</h2>
-<p>WordPress 6.6 and later already rolls back an automatic update that causes a fatal error. That is good. SafeStep covers what core does not.</p>
+<h2>Backstep compared with WordPress itself</h2>
+<p>WordPress 6.6 and later already rolls back an automatic update that causes a fatal error. That is good. Backstep covers what core does not.</p>
 <ul>
-<li><strong>Updates you click yourself, bulk updates and WP-CLI.</strong> Core does not roll these back. SafeStep takes a snapshot, checks and rolls back.</li>
-<li><strong>HTTP 5xx errors without a fatal.</strong> Core does not check for them. SafeStep detects them.</li>
-<li><strong>Keeping older versions.</strong> Core does not. SafeStep lets you choose how many to keep.</li>
-<li><strong>Not retrying a version that failed.</strong> Core does not. SafeStep holds the version.</li>
-<li><strong>Email when a rollback happens.</strong> Core does not send one. SafeStep does.</li>
+<li><strong>Updates you click yourself, bulk updates and WP-CLI.</strong> Core does not roll these back. Backstep takes a snapshot, checks and rolls back.</li>
+<li><strong>HTTP 5xx errors without a fatal.</strong> Core does not check for them. Backstep detects them.</li>
+<li><strong>Keeping older versions.</strong> Core does not. Backstep lets you choose how many to keep.</li>
+<li><strong>Not retrying a version that failed.</strong> Core does not. Backstep holds the version.</li>
+<li><strong>Email when a rollback happens.</strong> Core does not send one. Backstep does.</li>
 </ul>
 <p>For an automatic update that causes a PHP fatal error, both roll back.</p>
 
-<h2>What SafeStep does not do</h2>
+<h2>What Backstep does not do</h2>
 <p>I would rather say this plainly than have you find out later.</p>
 <ul>
 <li><strong>It is not a backup plugin.</strong> It stores plugin files only. It does not back up your database, uploads or themes. Keep real backups too.</li>
@@ -62,16 +62,16 @@ answer: SafeStep Updates is a free WordPress plugin that makes a copy of a plugi
 <li><strong>Single sites for now.</strong> Multisite is not supported yet.</li>
 </ul>
 
-<h2>How to install SafeStep</h2>
+<h2>How to install Backstep</h2>
 <p>You need WordPress 6.0 or newer and PHP 7.4 or newer. The plugin is free and uses the GPL licence.</p>
 <ol>
-<li>Download the zip from <a href="https://safestep.iamknr.in/" rel="noopener">safestep.iamknr.in</a> (version 0.2.0 at the time of writing).</li>
+<li>Download the zip from <a href="https://backstep.iamknr.in/" rel="noopener">backstep.iamknr.in</a> (version 0.2.1 at the time of writing).</li>
 <li>In WordPress go to Plugins, Add New, Upload Plugin, choose the zip and activate it.</li>
-<li>Manual updates are protected straight away. Open Tools, then SafeStep, to turn on auto-updates and add the pages you care about.</li>
+<li>Manual updates are protected straight away. Open Tools, then Backstep, to add the pages you care about.</li>
 </ol>
-<p>The code is on <a href="https://github.com/iam-knr/safestep-updates" rel="noopener">GitHub</a>.</p>
+<p>The code is on <a href="https://github.com/iam-knr/backstep-updates" rel="noopener">GitHub</a>.</p>
 
-<div class="magnet" id="free-download"><div class="lab">Free download</div><h2>WordPress Plugin Update Safety Checklist (PDF)</h2><p>A two page routine for updating plugins without losing a night to a broken site: what to do before, during and after an update, and what to do if it breaks. Works with or without SafeStep. No form, no email needed.</p><a class="btn" href="/downloads/wordpress-plugin-update-safety-checklist.pdf" rel="noopener" download>Download the checklist</a></div>
+<div class="magnet" id="free-download"><div class="lab">Free download</div><h2>WordPress Plugin Update Safety Checklist (PDF)</h2><p>A two page routine for updating plugins without losing a night to a broken site: what to do before, during and after an update, and what to do if it breaks. Works with or without Backstep. No form, no email needed.</p><a class="btn" href="/downloads/wordpress-plugin-update-safety-checklist.pdf" rel="noopener" download>Download the checklist</a></div>
 
 <h2>What I built it for</h2>
 <p>I write WordPress plugins and I run sites that carry live ad traffic. A broken page during a campaign costs money straight away, so I wanted updates to be boring.</p>
@@ -79,10 +79,10 @@ answer: SafeStep Updates is a free WordPress plugin that makes a copy of a plugi
 <p>For pages that carry paid traffic, also read my notes on <a href="/blog/ai-landing-page-development/">landing pages</a>.</p>
 
 <h2>Frequently asked questions</h2>
-<details><summary>What is SafeStep Updates?</summary><p>SafeStep Updates is a free WordPress plugin that snapshots every plugin update, checks your site afterwards and rolls back automatically if the update breaks it.</p></details>
-<details><summary>Does SafeStep cost anything?</summary><p>It is free and released under the GPL licence.</p></details>
+<details><summary>What is Backstep Updates?</summary><p>Backstep Updates is a free WordPress plugin that snapshots every plugin update, checks your site afterwards and rolls back automatically if the update breaks it.</p></details>
+<details><summary>Does Backstep cost anything?</summary><p>It is free and released under the GPL licence.</p></details>
 <details><summary>Which updates does it protect?</summary><p>Manual updates from the Plugins or Updates screen, bulk updates, automatic updates and WP-CLI updates.</p></details>
 <details><summary>What counts as a failure?</summary><p>A server error or a PHP fatal on the pages it checks. Those are your home page, login page and any pages you add. Problems that already existed before the update are ignored.</p></details>
-<details><summary>Is SafeStep a backup plugin?</summary><p>No. It stores plugin files only, not your database, uploads or themes. Keep your usual backups.</p></details>
-<details><summary>Does WordPress already roll back bad updates?</summary><p>WordPress 6.6 and later rolls back an automatic update that causes a fatal error. It does not do that for updates you run yourself, in bulk or with WP-CLI. SafeStep covers those.</p></details>
+<details><summary>Is Backstep a backup plugin?</summary><p>No. It stores plugin files only, not your database, uploads or themes. Keep your usual backups.</p></details>
+<details><summary>Does WordPress already roll back bad updates?</summary><p>WordPress 6.6 and later rolls back an automatic update that causes a fatal error. It does not do that for updates you run yourself, in bulk or with WP-CLI. Backstep covers those.</p></details>
 <details><summary>What versions does it need?</summary><p>WordPress 6.0 or newer and PHP 7.4 or newer. Multisite is not supported yet.</p></details>

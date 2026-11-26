@@ -140,7 +140,7 @@ Contact: https://linkedin.com/in/iamknr/
 - [Ads Mentor](https://adsmentor.in)
 - [AI in Marketing author page](https://aiinmarketing.in/author/kailasnathr)
 - [AdCheck, Meta ad rejection checker (Chrome extension)](https://adcheck.iamknr.in/)
-- [SafeStep Updates, WordPress plugin update rollback](https://safestep.iamknr.in/)
+- [Backstep Updates, WordPress plugin update rollback](https://backstep.iamknr.in/)
 - [Big SEO Programmatic, WordPress plugin](https://wordpress.org/plugins/knr-pseo-generator/)
 - [Shika AI, the desktop buddy](https://iam-knr.github.io/desktop-buddy/)
 '''

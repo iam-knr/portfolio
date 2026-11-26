@@ -19,7 +19,7 @@ CFG['agentic-ai-for-indian-smes-automation-guide']=(["Agentic AI for","Indian SM
 CFG['shika-ai-desktop-buddy-hobby-project']=(["Shika AI,","the desktop","buddy"],"Voice typing that stays on your machine.","Buddy",["Talk","Remind","Tasks","Notes","Focus"],("Free and open source","Runs locally"),"A desktop buddy hub with talk, remind, tasks, notes and focus around it.")
 CFG['adcheck-meta-ad-rejection-checker-chrome-extension']=(["AdCheck for","Meta ads"],"Catch the rejection before you publish.","Check",["Copy","Creative","Policy","Fix","India"],("Hover for the reason","A person publishes"),"An ad check hub with copy, creative, policy, fix and India rules around it.")
 CFG['programmatic-seo-wordpress-plugin-big-seo-programmatic']=(["Programmatic SEO","on WordPress"],"Many pages. Each one worth reading.","pSEO",["Data","Template","Unique","Links","Launch"],("40% unique text","Launch in batches"),"A programmatic SEO hub with data, template, unique text, links and launch around it.")
-CFG['safestep-updates-wordpress-plugin-rollback']=(["SafeStep","Updates"],"Snapshot. Check. Roll back if it breaks.","Safe",["Snapshot","Install","Check","Roll back","Alert"],("Free plugin","Plugins only"),"A plugin update safety hub with snapshot, install, check, roll back and alert around it.")
+CFG['backstep-updates-wordpress-plugin-rollback']=(["Backstep","Updates"],"Snapshot. Check. Roll back if it breaks.","Safe",["Snapshot","Install","Check","Roll back","Alert"],("Free plugin","Plugins only"),"A plugin update safety hub with snapshot, install, check, roll back and alert around it.")
 
 def pill(x,y,t,fill="#fff",tc=INK):
     w=len(t)*13+34

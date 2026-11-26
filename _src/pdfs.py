@@ -158,7 +158,7 @@ DOCS['wordpress-plugin-update-safety-checklist.pdf']=build(
  ("Test the alert once",""),
  ("Review the update history once a month",""),
 ])],
-'SafeStep Updates saves a copy before every plugin update, checks your site after, and restores the old version if it breaks. Free. <a href="https://safestep.iamknr.in/">safestep.iamknr.in</a> · Guide: <a href="https://iamknr.in/blog/safestep-updates-wordpress-plugin-rollback/">iamknr.in/blog</a>',
+'Backstep Updates saves a copy before every plugin update, checks your site after, and restores the old version if it breaks. Free. <a href="https://backstep.iamknr.in/">backstep.iamknr.in</a> · Guide: <a href="https://iamknr.in/blog/backstep-updates-wordpress-plugin-rollback/">iamknr.in/blog</a>',
 "A working checklist, not a guarantee. A site can break in ways a quick check will not see. Keep real backups.")
 
 DOCS['desktop-buddy-weekly-setup-sheet.pdf']=build(

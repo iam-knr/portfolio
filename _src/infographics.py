@@ -91,7 +91,7 @@ b.append(T(24,196,'100+','n','start','font-size="42"'))
 b.append(T(140,182,'ACTIVE','s')); b.append(T(140,196,'INSTALLS','s'))
 S3=svg('Programmatic SEO: real data rows go into one template with at least 40 percent unique text per page, you read 10 pages by hand, then publish 10 to 20 at a time while weak pages are held back. The plugin has 100 plus active installs.',''.join(b),3)
 
-# 4 SafeStep
+# 4 Backstep
 b=[]
 nodes=[(24,'1','SNAPSHOT',('COPY OF THE','OLD FILES')),(148,'2','INSTALL',('WORDPRESS','AS USUAL')),(272,'3','CHECK',('HOME + LOGIN','+ YOUR PAGES'))]
 for k,(x,n,t,(a,c2)) in enumerate(nodes):
@@ -109,7 +109,7 @@ b.append(L('M446,122 L446,148 L74,148 L74,110','st','ar4'))
 b.append(T(260,168,'OLD VERSION RETURNS, YOU GET AN EMAIL','s','middle'))
 b.append(T(24,200,'GPL','n','start','font-size="38"'))
 b.append(T(118,200,'FREE PLUGIN','s'))
-S4=svg('SafeStep Updates: snapshot the old files, WordPress installs the update as usual, SafeStep checks the home page, login page and your pages. If the site is healthy it keeps the update. If it is broken it rolls back, the old version returns and you get an email. A free GPL plugin.',''.join(b),4)
+S4=svg('Backstep Updates: snapshot the old files, WordPress installs the update as usual, Backstep checks the home page, login page and your pages. If the site is healthy it keeps the update. If it is broken it rolls back, the old version returns and you get an email. A free GPL plugin.',''.join(b),4)
 
 # 5 Book
 b=[]
